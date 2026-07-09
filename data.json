@@ -35,5 +35,15 @@
     "link": "https://us.mozaracing.com/products/universal-mounting-plate",
     "rig": "racing",
     "active": true
+  },
+  {
+    "id": "p_sy1y78ky",
+    "category": "Shifter",
+    "name": "MOZA   HGP   Shifter",
+    "image": "https://us.mozaracing.com/cdn/shop/files/MOZA-HGP-Shifter-1-update_f0b2312d-685e-40d4-a483-2d63358141fc.webp?v=1752745275&width=1000",
+    "price": 149,
+    "link": "https://us.mozaracing.com/products/hgp-shifter",
+    "rig": "racing",
+    "active": true
   }
 ]
