@@ -1,0 +1,29 @@
+[
+  {
+    "id": "p_9vkwkb8n",
+    "category": "Pedals",
+    "name": "MOZA mBooster Active Pedal Set (with CRP2 Throttle)",
+    "image": "https://us.mozaracing.com/cdn/shop/files/mBooster_Pedal_Set_with_CRP2_Throttle_-1.png?v=1767606139&width=1000",
+    "price": 949,
+    "link": "https://us.mozaracing.com/products/mbooster-pedal-set",
+    "rig": "racing"
+  },
+  {
+    "id": "p_t3enjktt",
+    "category": "Wheel Base + Wheel",
+    "name": "R12 V2 and RS V2 Bundle",
+    "image": "https://us.mozaracing.com/cdn/shop/files/R12RSV2_082.png?v=1752820272&width=1000",
+    "price": 739,
+    "link": "https://us.mozaracing.com/products/r12-rs-bundle",
+    "rig": "racing"
+  },
+  {
+    "id": "p_izmv7by2",
+    "category": "Yoke Base + Yoke",
+    "name": "MOZA AY210 Force Feedback Yoke Bundle",
+    "image": "https://us.mozaracing.com/cdn/shop/files/AY210_Bundle_2.png?v=1767606192&width=1920",
+    "price": 848,
+    "link": "https://us.mozaracing.com/products/ay210-ffb-yoke-bundle",
+    "rig": "flight"
+  }
+]
