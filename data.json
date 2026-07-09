@@ -25,5 +25,15 @@
     "price": 848,
     "link": "https://us.mozaracing.com/products/ay210-ffb-yoke-bundle",
     "rig": "flight"
+  },
+  {
+    "id": "p_d5p9zqdd",
+    "category": "Mounting Plate",
+    "name": "MOZA   Universal   Mounting   Plate",
+    "image": "https://us.mozaracing.com/cdn/shop/files/MOZAUniversalMountingPlate4_ab98d569-e836-4ff3-ba23-1f43baf04dab.webp?v=1754562506&width=1000",
+    "price": 29,
+    "link": "https://us.mozaracing.com/products/universal-mounting-plate",
+    "rig": "racing",
+    "active": true
   }
 ]
