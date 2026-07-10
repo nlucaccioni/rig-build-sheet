@@ -355,6 +355,17 @@ function showToast(msg){
   showToast._t = setTimeout(()=>toastEl.classList.remove('show'), 1800);
 }
 
+async function fetchPublishedParts(){
+  try{
+    const url = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${DATA_PATH}?t=${Date.now()}`;
+    const res = await fetch(url);
+    if(!res.ok) return null;
+    return await res.json();
+  }catch(e){
+    return null;
+  }
+}
+
 async function loadParts(){
   try{
     if(IS_ARTIFACT_ENV){
@@ -362,7 +373,20 @@ async function loadParts(){
       parts = res && res.value ? JSON.parse(res.value) : [];
     } else {
       const raw = localStorage.getItem(LOCAL_STORAGE_KEY);
-      parts = raw ? JSON.parse(raw) : [];
+      if(raw !== null){
+        parts = JSON.parse(raw);
+      } else {
+        // Nothing saved yet in this browser (e.g. first time opening edit.html on a new
+        // device, or via the GitHub Pages URL instead of the local file) — localStorage is
+        // scoped per-origin, so it won't carry over from elsewhere. Bootstrap from the last
+        // published build instead of starting blank.
+        const published = await fetchPublishedParts();
+        parts = published || [];
+        if(published){
+          await saveParts();
+          showToast('Loaded the last published build');
+        }
+      }
     }
   }catch(e){
     parts = [];

@@ -10,14 +10,15 @@ index.html       — the read-only viewer: same visual style, no write-capable c
                    serves at the root and the link sent to Dad.
 data.json        — published snapshot of `parts`, written by edit.html's Publish button, read by index.html.
                    Does not exist in the repo until the first Publish.
-README.md        — user-facing setup/hosting/publish instructions
+README.md        — general, user-facing description of what the tool is and does
+SETUP.md         — detailed hosting/Publish/cloning setup steps
 gitignore        — minimal (OS cruft only)
 CLAUDE.md        — Claude Code context (this doc's sibling)
 ARCHITECTURE.md  — this file
 DECISIONS.md     — chronological decision log
 ```
 
-`edit.html` and `index.html` are two independent, fully self-contained files (each with its own inline `<style>`/`<script>`) — there is no shared JS/CSS file between them. This means constants like `THEME`/`RIG_ORDER` and small helpers (`money()`, `escapeHtml()`) are duplicated across both. That's a deliberate tradeoff: it's a small amount of duplication in exchange for each file staying independently self-contained (see `docs/DECISIONS.md` point 1).
+`edit.html` and `index.html` are two independent, fully self-contained files (each with its own inline `<style>`/`<script>`) — there is no shared JS/CSS file between them. This means constants like `THEME`/`RIG_ORDER` and small helpers (`money()`, `escapeHtml()`) are duplicated across both. That's a deliberate tradeoff: it's a small amount of duplication in exchange for each file staying independently self-contained (see `DECISIONS.md` point 1).
 
 ## Data model
 

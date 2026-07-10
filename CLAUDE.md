@@ -32,9 +32,8 @@ The tool is now two files instead of one, solving both "Dad shouldn't be able to
 - **`edit.html`** — the private editor, full CRUD as before, used only by the user. Has a **Publish** button that pushes the current `parts` array to `data.json` in this repo via the GitHub Contents API, authenticated with a personal access token the user provides (fine-grained PAT, scoped to just this repo, Contents: read/write only). The token lives only in `edit.html`'s own `localStorage` — never committed to the repo. Committed to the public repo itself (confirmed with user): safe because publishing requires a real token with push access to this specific repo, which only the user has — the code's visibility grants no capability by itself.
 - **`index.html`** — the read-only viewer, the file GitHub Pages serves at the root and the link sent to Dad. Fetches the published `data.json` from `raw.githubusercontent.com` (no auth needed, repo is public) and renders it read-only — same visual style (rig tabs, Alternates read-only, Full Build totals) but **no add/edit/remove/swap UI at all in the shipped code**. Because the viewer literally contains no write capability, it doesn't matter how many people have the link.
 - Tradeoff accepted: publishing is a manual step (click "Publish" after making changes) rather than instantly live. Small UX cost for real security.
-- Full technical detail in `ARCHITECTURE.md` → "Publish flow"; decision record in `DECISIONS.md` point 9.
-
-**Not yet done / worth asking the user about next:** they haven't yet generated a GitHub personal access token or clicked Publish for the first time — `data.json` doesn't exist in the repo yet. Walk them through the README's "Setting up Publish" steps when they're ready to go live.
+- Full technical detail in `ARCHITECTURE.md` → "Publish flow"; decision record in `DECISIONS.md` point 9. Step-by-step setup (GitHub Pages hosting, generating the PAT, cloning for a different repo) lives in `SETUP.md`, not `README.md` — `README.md` is now the general, public-facing description of what the tool is, not a setup walkthrough.
+- The user has generated a PAT, published successfully, and `data.json` exists in the repo with real build data — this is fully live, not just built.
 
 ## Known limitations to keep in mind / keep surfacing to the user
 
