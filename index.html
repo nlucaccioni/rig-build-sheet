@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rig Build Sheet</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -49,6 +50,15 @@
   .masthead .view-only{ color:var(--muted); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; margin-top:3px; opacity:0.7; }
   .masthead-controls{ display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:18px; }
 
+  .tabs-wrap{ position:relative; min-width:0; }
+  .tabs-wrap::before, .tabs-wrap::after{
+    content:''; position:absolute; top:0; bottom:0; width:28px; z-index:2; pointer-events:none;
+    opacity:0; transition:opacity .2s ease;
+  }
+  .tabs-wrap::before{ left:0; background:linear-gradient(90deg, var(--bg), transparent); border-radius:10px 0 0 10px; }
+  .tabs-wrap::after{ right:0; background:linear-gradient(270deg, var(--bg), transparent); border-radius:0 10px 10px 0; }
+  .tabs-wrap.can-scroll-left::before{ opacity:1; }
+  .tabs-wrap.can-scroll-right::after{ opacity:1; }
   .tabs{ display:flex; gap:0; border:1px solid var(--line); border-radius:10px; overflow:hidden; flex-wrap:wrap; }
   .tab{
     padding:10px 20px; cursor:pointer; font-family:'Rajdhani',sans-serif; font-weight:600;
@@ -138,8 +148,26 @@
 
   .empty-hint{ color:var(--muted); font-size:13px; margin:-6px 0 18px; }
 
-  @media (max-width:520px){
+  @media (max-width:600px){
     .telemetry{grid-template-columns:1fr;}
+
+    .tabs{ flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+    .tabs::-webkit-scrollbar{ display:none; }
+    .tab{ flex:0 0 auto; padding:11px 16px; font-size:13.5px; }
+
+    .grid{ grid-template-columns:repeat(2,1fr); gap:10px; }
+    .card .body{ padding:10px 10px 9px; gap:5px; }
+    .card .name{ font-size:14px; }
+    .card .price{ font-size:16px; }
+    .card .cat, .card .rig-badge{
+      font-size:9px; padding:3px 6px; max-width:calc(50% - 12px);
+      overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+    }
+
+    .masthead .sub{ font-size:13.5px; }
+    .gauge .label{ font-size:11.5px; }
+    .gauge .value{ font-size:24px; }
+    .empty-hint{ font-size:13.5px; }
   }
 </style>
 </head>
@@ -153,12 +181,14 @@
     </div>
   </div>
   <div class="masthead-controls">
-    <div class="tabs">
-      <button class="tab active" data-rig="racing" id="tab-racing">Racing Rig</button>
-      <button class="tab" data-rig="flight" id="tab-flight">Flight Rig</button>
-      <button class="tab" data-rig="shared" id="tab-shared">Shared Peripherals</button>
-      <button class="tab" id="tab-alternates">Alternates</button>
-      <button class="tab" id="tab-fullbuild">Full Build</button>
+    <div class="tabs-wrap" id="tabs-wrap">
+      <div class="tabs" id="tabs">
+        <button class="tab active" data-rig="racing" id="tab-racing">Racing Rig</button>
+        <button class="tab" data-rig="flight" id="tab-flight">Flight Rig</button>
+        <button class="tab" data-rig="shared" id="tab-shared">Shared Peripherals</button>
+        <button class="tab" id="tab-alternates">Alternates</button>
+        <button class="tab" id="tab-fullbuild">Full Build</button>
+      </div>
     </div>
   </div>
 
@@ -380,6 +410,16 @@ function renderAlternates(){
     altGrid.appendChild(card);
   });
 }
+
+function updateTabScrollFade(){
+  const el = document.getElementById('tabs');
+  const wrap = document.getElementById('tabs-wrap');
+  wrap.classList.toggle('can-scroll-left', el.scrollLeft > 4);
+  wrap.classList.toggle('can-scroll-right', el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
+}
+document.getElementById('tabs').addEventListener('scroll', updateTabScrollFade);
+window.addEventListener('resize', updateTabScrollFade);
+updateTabScrollFade();
 
 document.getElementById('tab-racing').onclick = ()=>setRig('racing');
 document.getElementById('tab-flight').onclick = ()=>setRig('flight');

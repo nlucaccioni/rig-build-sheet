@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rig Build Sheet — Editor</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -48,6 +49,15 @@
   .masthead .sub{ color:var(--muted); font-size:13px; letter-spacing:0.08em; text-transform:uppercase; margin-top:6px; }
   .masthead-controls{ display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:18px; }
 
+  .tabs-wrap{ position:relative; min-width:0; }
+  .tabs-wrap::before, .tabs-wrap::after{
+    content:''; position:absolute; top:0; bottom:0; width:28px; z-index:2; pointer-events:none;
+    opacity:0; transition:opacity .2s ease;
+  }
+  .tabs-wrap::before{ left:0; background:linear-gradient(90deg, var(--bg), transparent); border-radius:10px 0 0 10px; }
+  .tabs-wrap::after{ right:0; background:linear-gradient(270deg, var(--bg), transparent); border-radius:0 10px 10px 0; }
+  .tabs-wrap.can-scroll-left::before{ opacity:1; }
+  .tabs-wrap.can-scroll-right::after{ opacity:1; }
   .tabs{ display:flex; gap:0; border:1px solid var(--line); border-radius:10px; overflow:hidden; flex-wrap:wrap; }
   .tab{
     padding:10px 20px; cursor:pointer; font-family:'Rajdhani',sans-serif; font-weight:600;
@@ -211,9 +221,30 @@
     font-size:11px; padding:0; font-family:'Inter',sans-serif;
   }
 
-  @media (max-width:520px){
+  @media (max-width:600px){
     .row2{grid-template-columns:1fr;}
     .telemetry{grid-template-columns:1fr;}
+
+    .tabs{ flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+    .tabs::-webkit-scrollbar{ display:none; }
+    .tab{ flex:0 0 auto; padding:11px 16px; font-size:13.5px; }
+
+    .grid{ grid-template-columns:repeat(2,1fr); gap:10px; }
+    .card .body{ padding:10px 10px 9px; gap:5px; }
+    .card .name{ font-size:14px; }
+    .card .price{ font-size:16px; }
+    .card .cat, .card .rig-badge{
+      font-size:9px; padding:3px 6px; max-width:calc(50% - 12px);
+      overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+    }
+    .card .actions{ flex-wrap:wrap; }
+    .card .actions .btn.link{ flex:1 1 100%; }
+    .card .actions.two-row .btn.link{ flex:1; }
+
+    .masthead .sub{ font-size:13.5px; }
+    .gauge .label{ font-size:11.5px; }
+    .gauge .value{ font-size:24px; }
+    .empty-hint{ font-size:13.5px; }
   }
 </style>
 </head>
@@ -226,12 +257,14 @@
     </div>
   </div>
   <div class="masthead-controls">
-    <div class="tabs">
-      <button class="tab active" data-rig="racing" id="tab-racing">Racing Rig</button>
-      <button class="tab" data-rig="flight" id="tab-flight">Flight Rig</button>
-      <button class="tab" data-rig="shared" id="tab-shared">Shared Peripherals</button>
-      <button class="tab" id="tab-alternates">Alternates</button>
-      <button class="tab" id="tab-fullbuild">Full Build</button>
+    <div class="tabs-wrap" id="tabs-wrap">
+      <div class="tabs" id="tabs">
+        <button class="tab active" data-rig="racing" id="tab-racing">Racing Rig</button>
+        <button class="tab" data-rig="flight" id="tab-flight">Flight Rig</button>
+        <button class="tab" data-rig="shared" id="tab-shared">Shared Peripherals</button>
+        <button class="tab" id="tab-alternates">Alternates</button>
+        <button class="tab" id="tab-fullbuild">Full Build</button>
+      </div>
     </div>
     <div class="publish-box">
       <button class="btn primary" id="publish-btn">⬆ Publish</button>
@@ -265,8 +298,8 @@
 <div class="overlay" id="overlay">
   <div class="modal">
     <h2 id="modal-title">Add Part</h2>
-    <div class="field" id="alt-rig-field" style="display:none;">
-      <label>For rig</label>
+    <div class="field">
+      <label>Rig</label>
       <select id="f-altrig">
         <option value="racing">Racing Rig</option>
         <option value="flight">Flight Rig</option>
@@ -715,8 +748,8 @@ function escapeAttr(s){ return escapeHtml(s); }
 function openAdd(){
   editingId = null;
   modalIsAlternate = false;
-  document.getElementById('alt-rig-field').style.display = 'none';
-  document.getElementById('modal-title').textContent = 'Add Part — ' + THEME[activeRig].name;
+  document.getElementById('f-altrig').value = activeRig;
+  document.getElementById('modal-title').textContent = 'Add Part';
   document.getElementById('f-category').value = '';
   document.getElementById('f-name').value = '';
   document.getElementById('f-image').value = '';
@@ -733,7 +766,7 @@ function openEdit(id){
   if(!p) return;
   editingId = id;
   modalIsAlternate = false;
-  document.getElementById('alt-rig-field').style.display = 'none';
+  document.getElementById('f-altrig').value = p.rig || activeRig;
   document.getElementById('modal-title').textContent = 'Edit Part';
   document.getElementById('f-category').value = p.category || '';
   document.getElementById('f-name').value = p.name || '';
@@ -748,7 +781,6 @@ function openEdit(id){
 function openAddAlternate(){
   editingId = null;
   modalIsAlternate = true;
-  document.getElementById('alt-rig-field').style.display = 'block';
   const altRigSelect = document.getElementById('f-altrig');
   altRigSelect.value = altRigSelect.value || 'racing';
   document.getElementById('modal-title').textContent = 'Add Alternate';
@@ -768,7 +800,6 @@ function openEditAlternate(id){
   if(!p) return;
   editingId = id;
   modalIsAlternate = true;
-  document.getElementById('alt-rig-field').style.display = 'block';
   document.getElementById('f-altrig').value = p.rig || 'racing';
   document.getElementById('modal-title').textContent = 'Edit Alternate';
   document.getElementById('f-category').value = p.category || '';
@@ -796,7 +827,10 @@ function populateDatalist(rig){
     seen.add(key);
     categorySuggestions.push(c);
   });
-  renderCategoryOptions();
+  // Just refreshes the suggestion data — does not touch visibility, so opening the modal
+  // (which sets the category field's value programmatically) never pops the dropdown open
+  // on its own. Only the field's own focus/input handlers show it.
+  hideCategoryOptions();
 }
 
 function renderCategoryOptions(){
@@ -830,18 +864,18 @@ async function savePart(){
     image: document.getElementById('f-image').value.trim(),
     price: parseFloat(document.getElementById('f-price').value) || 0,
     link: document.getElementById('f-link').value.trim(),
+    rig: document.getElementById('f-altrig').value,
   };
-  if(modalIsAlternate){
-    data.rig = document.getElementById('f-altrig').value;
-    data.active = false;
-  } else {
-    data.rig = activeRig;
-    data.active = true;
-  }
+  data.active = !modalIsAlternate;
+
+  let rigChanged = false;
   if(editingId){
     const idx = parts.findIndex(p=>p.id===editingId);
-    if(idx>-1) parts[idx] = {...parts[idx], ...data};
-    showToast(modalIsAlternate ? 'Alternate updated' : 'Part updated');
+    if(idx>-1){
+      rigChanged = parts[idx].rig !== data.rig;
+      parts[idx] = {...parts[idx], ...data};
+    }
+    showToast(rigChanged ? `Moved to ${THEME[data.rig].name}` : (modalIsAlternate ? 'Alternate updated' : 'Part updated'));
   }else{
     parts.push({ id: uid(), ...data });
     showToast(modalIsAlternate ? 'Alternate added' : 'Part added');
@@ -1006,6 +1040,16 @@ async function fetchDetails(){
 document.getElementById('fetch-price-btn').onclick = fetchDetails;
 document.getElementById('publish-btn').onclick = publishBuild;
 renderPublishMeta();
+
+function updateTabScrollFade(){
+  const el = document.getElementById('tabs');
+  const wrap = document.getElementById('tabs-wrap');
+  wrap.classList.toggle('can-scroll-left', el.scrollLeft > 4);
+  wrap.classList.toggle('can-scroll-right', el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
+}
+document.getElementById('tabs').addEventListener('scroll', updateTabScrollFade);
+window.addEventListener('resize', updateTabScrollFade);
+updateTabScrollFade();
 
 document.getElementById('tab-racing').onclick = ()=>setRig('racing');
 document.getElementById('tab-flight').onclick = ()=>setRig('flight');
