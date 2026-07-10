@@ -94,9 +94,19 @@
     display:grid; grid-template-columns:1fr; gap:1px; background:var(--line); border:1px solid var(--line);
     border-radius:12px; overflow:hidden; margin-bottom:22px;
   }
-  .grand-total .inner{ background:var(--panel); padding:20px 24px; display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+  .grand-total .inner{ background:var(--panel); padding:20px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; }
   .grand-total .label{ font-family:'Rajdhani',sans-serif; text-transform:uppercase; letter-spacing:0.08em; font-size:14px; color:var(--muted); }
   .grand-total .value{ font-family:'JetBrains Mono',monospace; font-size:34px; font-weight:700; color:#fff; }
+  .grand-total .inner.secondary{ padding:12px 24px; }
+  .grand-total .inner.secondary .value{ font-size:19px; color:var(--text); }
+  .grand-total .label input[type="number"]{
+    width:56px; padding:3px 6px; margin:0 2px; border-radius:6px; border:1px solid var(--line);
+    background:var(--panel-2); color:var(--text); font-family:'JetBrains Mono',monospace; font-size:12.5px;
+    -moz-appearance:textfield;
+  }
+  .grand-total .label input[type="number"]:focus{ outline:none; border-color:var(--accent); }
+  .grand-total .label input[type="number"]::-webkit-inner-spin-button,
+  .grand-total .label input[type="number"]::-webkit-outer-spin-button{ -webkit-appearance:none; margin:0; }
   .compare-cols{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
   .compare-col{ background:var(--panel); border:1px solid var(--line); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; }
   .compare-col .head{ padding:14px 16px; border-bottom:1px solid var(--line); }
@@ -234,6 +244,11 @@ let parts = [];
 let activeRig = "racing";
 let notPublished = false; // true when data.json couldn't be fetched — drives empty-state copy, never blocks rendering
 
+const TAX_RATE_KEY = 'rig-tax-rate';
+// Tax rate is a local, per-browser "what-if" display setting — each viewer can set their own
+// assumed rate. It's never published, so it's independent of the shared build data.
+let taxRate = parseFloat(localStorage.getItem(TAX_RATE_KEY)) || 0;
+
 const grid = document.getElementById('grid');
 
 function money(n){
@@ -326,15 +341,31 @@ function renderFullBuild(){
       </div>`;
   }).join('');
 
+  const tax = grand * (taxRate / 100);
+
   fb.innerHTML = `
     <div class="grand-total">
       <div class="inner">
         <span class="label">Grand total — full build (alternates not included)</span>
         <span class="value">${money(grand)}</span>
       </div>
+      <div class="inner secondary">
+        <span class="label">Estimated tax (<input type="number" id="tax-rate-input" value="${taxRate}" step="0.01" min="0" max="25">%)</span>
+        <span class="value">${money(tax)}</span>
+      </div>
+      <div class="inner secondary">
+        <span class="label">Estimated total with tax</span>
+        <span class="value">${money(grand + tax)}</span>
+      </div>
     </div>
     <div class="compare-cols">${cols}</div>
   `;
+
+  document.getElementById('tax-rate-input').addEventListener('change', (e)=>{
+    taxRate = parseFloat(e.target.value) || 0;
+    localStorage.setItem(TAX_RATE_KEY, String(taxRate));
+    renderFullBuild();
+  });
 }
 
 function partsForRig(){ return parts.filter(p => p.rig === activeRig && p.active !== false); }
