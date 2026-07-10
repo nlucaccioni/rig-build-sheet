@@ -56,3 +56,16 @@ Two options were laid out:
 - **Option B:** a client-side PIN gate on the single existing page. Explicitly flagged to the user as *not* real security (trivially bypassed via dev tools/view-source), just a deterrent against an accidental click.
 
 The user was leaning toward Option A but the session ended (switch to Claude Code) before final confirmation. **Confirm which direction before building** — see `CLAUDE.md` → "Immediate next step" for the full technical plan for Option A.
+
+## 9. Option A implemented: editor/viewer split, no shared JS/CSS file
+
+Confirmed with the user (in Claude Code) to proceed with Option A. Two sub-decisions were confirmed directly rather than assumed:
+
+- **Alternates are shown in the viewer, read-only** (card + rig badge + store link, no swap button) rather than omitted — the user wanted Dad to see dream upgrades/budget options under consideration, not just the active build.
+- **`edit.html` is committed to the public repo**, not gitignored. This is safe under the same reasoning as making the repo public in the first place (point 7): the file being visible grants no capability by itself. Publishing requires a real GitHub personal access token with push access to *this specific repo*, which only the user has — the code's visibility isn't the security boundary, GitHub's own token permissions are. Kept it committed (rather than local-only) so it's backed up and version-controlled like everything else.
+
+**Implementation:**
+- `index.html` (old, full-featured) renamed to `edit.html` via `git mv`, then extended with a **Publish** button that pushes the current `parts` array to `data.json` in this repo via the GitHub Contents API (GET for current `sha`, then PUT with base64-encoded content). The token is requested once via `prompt()` and stored in the editor's own `localStorage` (`rig-github-token`) — never written to any file.
+- A new `index.html` was built from scratch as the read-only viewer: fetches `data.json` from `raw.githubusercontent.com` (cache-busted), and contains zero write-capable code — no modal, no `CATEGORIES`, no scraping/CORS-proxy code, no `localStorage` at all.
+- **No shared JS/CSS file was introduced between the two.** Each stays fully self-contained per the project's original "no build step, no framework" convention (point 1) — a small amount of constant/helper duplication (`THEME`, `RIG_ORDER`, `money()`, `escapeHtml()`) was accepted in exchange for keeping "just open the file" true for both.
+- Considered using `token <token>` (classic PAT header format) vs `Bearer <token>` for the GitHub API `Authorization` header — went with `Bearer`, which is what GitHub's current docs recommend and what fine-grained tokens expect.

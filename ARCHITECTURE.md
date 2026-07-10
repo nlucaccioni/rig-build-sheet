@@ -1,18 +1,23 @@
 # Architecture Reference
 
-Deep-dive reference for `index.html`. Read `CLAUDE.md` first for orientation; come here when you need to actually touch the code.
+Deep-dive reference for `edit.html` and `index.html`. Read `CLAUDE.md` first for orientation; come here when you need to actually touch the code.
 
 ## File structure
 
 ```
-index.html      — the entire app: markup, styles, and script in one file
-README.md       — user-facing setup/hosting instructions
-.gitignore      — minimal (OS cruft only)
-CLAUDE.md       — Claude Code context (this doc's sibling)
-docs/
-  ARCHITECTURE.md  — this file
-  DECISIONS.md     — chronological decision log
+edit.html        — the full editor: markup, styles, script, all CRUD + Publish. Private, used only by the owner.
+index.html       — the read-only viewer: same visual style, no write-capable code at all. What GitHub Pages
+                   serves at the root and the link sent to Dad.
+data.json        — published snapshot of `parts`, written by edit.html's Publish button, read by index.html.
+                   Does not exist in the repo until the first Publish.
+README.md        — user-facing setup/hosting/publish instructions
+gitignore        — minimal (OS cruft only)
+CLAUDE.md        — Claude Code context (this doc's sibling)
+ARCHITECTURE.md  — this file
+DECISIONS.md     — chronological decision log
 ```
+
+`edit.html` and `index.html` are two independent, fully self-contained files (each with its own inline `<style>`/`<script>`) — there is no shared JS/CSS file between them. This means constants like `THEME`/`RIG_ORDER` and small helpers (`money()`, `escapeHtml()`) are duplicated across both. That's a deliberate tradeoff: it's a small amount of duplication in exchange for each file staying independently self-contained (see `docs/DECISIONS.md` point 1).
 
 ## Data model
 
@@ -38,7 +43,7 @@ Notes:
 
 ## Storage
 
-Two backends, chosen automatically at load time:
+`edit.html` (the editor) has two backends for its working copy, chosen automatically at load time:
 
 ```js
 const IS_ARTIFACT_ENV = (typeof window.storage !== 'undefined' && window.storage !== null);
@@ -49,7 +54,26 @@ const IS_ARTIFACT_ENV = (typeof window.storage !== 'undefined' && window.storage
 
 Both paths are wrapped in try/catch in `loadParts()` / `saveParts()`; failures fall back to an empty array / a toast, never a thrown error.
 
-**Important caveat:** `localStorage` is scoped per-browser, per-device (and per-origin/URL). Two different people opening the same GitHub Pages link will each see their *own* separate data, not a shared build. This is the whole reason the Editor/Viewer split (see `CLAUDE.md` → Immediate next step) is being built — to have one canonical published dataset that all viewers read.
+**Important caveat:** `localStorage` is scoped per-browser, per-device (and per-origin/URL) — this is exactly why `edit.html`'s copy is never what Dad sees. What he sees is the separately-published `data.json` (see Publish flow below), fetched fresh by `index.html` on every load — `index.html` has no storage of its own at all.
+
+## Publish flow (edit.html → data.json → index.html)
+
+`edit.html` has a **Publish** button (`publishBuild()`) that pushes the current in-memory `parts` array to `data.json` in this repo via the GitHub Contents API:
+
+1. **Token:** `getGithubToken()` reads a personal access token from `localStorage` (`rig-github-token`), prompting once via `prompt()` if absent. The token never touches the repo — it only ever lives in the editor's own browser storage. `changeGithubToken()` lets the user rotate it later.
+2. **Read current sha:** `GET /repos/{owner}/{repo}/contents/data.json?ref={branch}` — GitHub's Contents API requires the file's current blob `sha` to update it (a 404 here just means "first publish," handled by omitting `sha` from the next call rather than erroring).
+3. **Write:** `PUT /repos/{owner}/{repo}/contents/data.json` with a base64-encoded body (`b64EncodeUnicode()` — a UTF-8-safe wrapper around `btoa`, needed since part names can contain non-ASCII characters that plain `btoa` can't handle) and the `sha` from step 2 when updating an existing file.
+4. **Result handling:** 401 clears the stored token (it's presumed invalid) and asks the user to re-enter it; 403 surfaces a permissions message; anything else surfaces a generic retry toast. On success, a `rig-last-published` timestamp is saved to `localStorage` and shown next to the Publish button.
+
+`GITHUB_OWNER` / `GITHUB_REPO` / `GITHUB_BRANCH` / `DATA_PATH` are constants at the top of `edit.html`'s script — update these if the repo is ever renamed or forked.
+
+`index.html` reads the published data with a plain, unauthenticated `fetch()`:
+
+```js
+const DATA_URL = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${DATA_PATH}`;
+```
+
+A `?t=Date.now()` cache-buster is appended since `raw.githubusercontent.com` can serve a briefly stale cached copy otherwise. If the fetch fails or 404s (nothing published yet), the viewer shows a plain "No build has been published yet" message instead of an empty/broken page.
 
 ## View/nav state
 
@@ -70,11 +94,15 @@ Top-level nav functions (each clears tab-active state, swaps the `--accent`/`--a
 
 ## Rendering functions
 
-- `render()` — the main per-rig grid. Filters `parts` to `p.rig === activeRig && p.active !== false`. Shows Total/Count gauges, then part cards, then an "Add Part" dashed card.
-- `renderAlternates()` — filters `parts` to `p.active === false` (across all rigs). Each card shows a rig-colored badge and a "⇄ Swap into rig" button (see Swap mechanic below), plus an "Add Alternate" dashed card.
-- `renderFullBuild()` — filters `parts` to `p.active !== false`, grouped by `RIG_ORDER = ["racing","flight","shared"]`, one column per rig with its own subtotal, plus a grand total banner across all three. **Alternates are deliberately excluded** from this total since they're not real spend yet.
+Both files implement `render()` / `renderAlternates()` / `renderFullBuild()` with the same filtering logic; `index.html`'s versions are stripped of every write-capable element (no dashed "Add" card, no edit/remove/swap/demote buttons — just the card, its data, and the store link).
 
-## Modal (Add/Edit)
+- `render()` — the main per-rig grid. Filters `parts` to `p.rig === activeRig && p.active !== false`. Shows Total/Count gauges, then part cards (in `edit.html`, plus an "Add Part" dashed card).
+- `renderAlternates()` — filters `parts` to `p.active === false` (across all rigs). Each card shows a rig-colored badge; in `edit.html` also a "⇄ Swap into rig" button (see Swap mechanic below) and an "Add Alternate" dashed card. In `index.html` the card is informational only.
+- `renderFullBuild()` — filters `parts` to `p.active !== false`, grouped by `RIG_ORDER = ["racing","flight","shared"]`, one column per rig with its own subtotal, plus a grand total banner across all three. **Alternates are deliberately excluded** from this total since they're not real spend yet. Identical in both files.
+
+The remaining sections below — Modal, Swap mechanic, Auto price/image lookup — describe `edit.html` only; none of that code exists in `index.html`.
+
+## Modal (Add/Edit) — edit.html only
 
 One shared modal (`#overlay` / `.modal`) handles four flows, distinguished by `modalIsAlternate` and `editingId`:
 
@@ -89,7 +117,7 @@ One shared modal (`#overlay` / `.modal`) handles four flows, distinguished by `m
 
 `savePart()` reads all the form fields, builds a `data` object, branches on `modalIsAlternate` for `rig`/`active`, then either merges into the existing part (`editingId` set) or pushes a new one. Calls `renderAlternates()` or `render()` depending on which flow was active.
 
-## Swap mechanic (Alternates ↔ active build)
+## Swap mechanic (Alternates ↔ active build) — edit.html only
 
 `swapAlternateIn(id)`:
 1. Finds the alternate part by id.
@@ -100,7 +128,7 @@ One shared modal (`#overlay` / `.modal`) handles four flows, distinguished by `m
 
 `demoteToAlternate(id)` is the reverse manual action, available from the main rig grid — sets `active = false` on an active part without deleting it, so it reappears in the Alternates tab.
 
-## Auto price/image lookup (`fetchDetails`)
+## Auto price/image lookup (`fetchDetails`) — edit.html only
 
 No API keys, no Anthropic API dependency (removed — see `docs/DECISIONS.md` for why). Pure client-side scraping:
 

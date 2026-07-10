@@ -40,12 +40,14 @@
   .wrap{ max-width: 1180px; margin: 0 auto; padding: 28px 20px 80px; }
 
   /* ---- Header ---- */
-  .masthead{ display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:18px; }
+  .masthead{ margin-bottom:16px; }
   .masthead h1{
     font-family:'Rajdhani',sans-serif; font-weight:700; letter-spacing:0.02em;
     font-size:clamp(28px,5vw,42px); margin:0; text-transform:uppercase; line-height:1;
   }
   .masthead .sub{ color:var(--muted); font-size:13px; letter-spacing:0.08em; text-transform:uppercase; margin-top:6px; }
+  .masthead .view-only{ color:var(--muted); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; margin-top:3px; opacity:0.7; }
+  .masthead-controls{ display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:18px; }
 
   .tabs{ display:flex; gap:0; border:1px solid var(--line); border-radius:10px; overflow:hidden; flex-wrap:wrap; }
   .tab{
@@ -76,10 +78,8 @@
   .gauge .label{ font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
   .gauge .value{ font-family:'JetBrains Mono',monospace; font-size:26px; font-weight:700; color:var(--text); }
   .gauge .value.accent{ color:var(--accent); }
-  .gauge .bar{ margin-top:10px; height:5px; background:var(--panel-2); border-radius:3px; overflow:hidden; }
-  .gauge .bar-fill{ height:100%; background:var(--accent); transition: width .4s ease; }
 
-  /* ---- Compare view ---- */
+  /* ---- Full Build view ---- */
   .grand-total{
     display:grid; grid-template-columns:1fr; gap:1px; background:var(--line); border:1px solid var(--line);
     border-radius:12px; overflow:hidden; margin-bottom:22px;
@@ -125,10 +125,6 @@
     font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.06em; text-transform:uppercase;
     padding:3px 8px; border-radius:5px; border:1px solid var(--line);
   }
-  .btn.swap{ width:100%; justify-content:center; background:var(--alt-dim); color:var(--alt); border-color:var(--alt); font-weight:700; }
-  .btn.swap:hover{ background:var(--alt); color:#1a1608; }
-  .card .actions.two-row{ flex-direction:column; gap:8px; }
-  .card .actions.two-row .sub-row{ display:flex; gap:8px; }
   .card .body{ padding:14px 14px 12px; display:flex; flex-direction:column; gap:6px; flex:1; }
   .card .name{ font-weight:600; font-size:15px; line-height:1.3; }
   .card .price{ font-family:'JetBrains Mono',monospace; font-size:18px; font-weight:700; color:var(--accent); }
@@ -138,61 +134,11 @@
     border:1px solid var(--line); background:var(--panel-2); color:var(--text); cursor:pointer; text-decoration:none;
     display:inline-flex; align-items:center; gap:5px; transition: all .15s ease;
   }
-  .btn:hover{ background:var(--line); }
   .btn.link{ color:var(--accent); border-color: var(--accent-dim); flex:1; justify-content:center; }
-  .btn.icon{ padding:7px 9px; }
-  .btn.danger:hover{ color:#e8542a; border-color:#e8542a; }
-
-  .card.add-card{
-    border-style:dashed; align-items:center; justify-content:center; cursor:pointer; min-height:220px;
-    color:var(--muted); background:transparent;
-  }
-  .card.add-card:hover{ color:var(--accent); border-color:var(--accent); }
-  .card.add-card .plus{ font-size:34px; line-height:1; margin-bottom:6px; font-weight:300; }
-  .card.add-card .txt{ font-family:'Rajdhani',sans-serif; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; font-size:13px; }
 
   .empty-hint{ color:var(--muted); font-size:13px; margin:-6px 0 18px; }
 
-  /* ---- Modal ---- */
-  .overlay{
-    position:fixed; inset:0; background:rgba(8,9,11,0.7); backdrop-filter: blur(3px);
-    display:none; align-items:center; justify-content:center; padding:20px; z-index:50;
-  }
-  .overlay.show{ display:flex; }
-  .modal{
-    background:var(--panel); border:1px solid var(--line); border-radius:14px; width:100%; max-width:440px;
-    padding:22px; max-height:88vh; overflow:auto;
-  }
-  .modal h2{ font-family:'Rajdhani',sans-serif; text-transform:uppercase; letter-spacing:0.04em; font-size:20px; margin:0 0 16px; }
-  .field{ margin-bottom:14px; }
-  .field label{ display:block; font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:5px; }
-  .field input, .field select{
-    width:100%; padding:9px 10px; border-radius:8px; border:1px solid var(--line); background:var(--panel-2);
-    color:var(--text); font-family:'Inter',sans-serif; font-size:14px;
-  }
-  .field input:focus, .field select:focus{ outline:none; border-color:var(--accent); }
-  .row2{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-  .link-row{ display:flex; gap:8px; }
-  .link-row input{ flex:1; }
-  .link-row .btn{ white-space:nowrap; padding:9px 12px; font-size:12.5px; }
-  .link-row .btn:disabled{ opacity:0.6; cursor:default; }
-  .fetch-msg{ font-size:12.5px; padding:2px 2px 0; }
-  .fetch-msg.ok{ color:var(--good); }
-  .fetch-msg.fail{ color:var(--muted); }
-  .modal-actions{ display:flex; gap:10px; margin-top:18px; }
-  .modal-actions .btn{ flex:1; justify-content:center; padding:10px; }
-  .btn.primary{ background:var(--accent); border-color:var(--accent); color:#101216; font-weight:700; }
-  .btn.primary:hover{ filter:brightness(1.08); }
-
-  .toast{
-    position:fixed; bottom:22px; left:50%; transform:translateX(-50%) translateY(20px); opacity:0;
-    background:var(--panel-2); border:1px solid var(--line); padding:10px 18px; border-radius:9px;
-    font-size:13px; transition:all .25s ease; pointer-events:none; z-index:60;
-  }
-  .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
-
   @media (max-width:520px){
-    .row2{grid-template-columns:1fr;}
     .telemetry{grid-template-columns:1fr;}
   }
 </style>
@@ -203,7 +149,10 @@
     <div>
       <h1>Rig Build Sheet</h1>
       <div class="sub" id="subtitle">Racing simulator — parts &amp; pricing log</div>
+      <div class="view-only">View only</div>
     </div>
+  </div>
+  <div class="masthead-controls">
     <div class="tabs">
       <button class="tab active" data-rig="racing" id="tab-racing">Racing Rig</button>
       <button class="tab" data-rig="flight" id="tab-flight">Flight Rig</button>
@@ -227,7 +176,7 @@
       </div>
     </div>
 
-    <div id="empty-hint" class="empty-hint" style="display:none;">No parts logged yet for this rig — add your first one below.</div>
+    <div id="empty-hint" class="empty-hint" style="display:none;"></div>
     <div class="grid" id="grid"></div>
   </div>
 
@@ -236,119 +185,44 @@
   <div id="fullbuild-view" style="display:none;"></div>
 </div>
 
-<div class="overlay" id="overlay">
-  <div class="modal">
-    <h2 id="modal-title">Add Part</h2>
-    <div class="field" id="alt-rig-field" style="display:none;">
-      <label>For rig</label>
-      <select id="f-altrig">
-        <option value="racing">Racing Rig</option>
-        <option value="flight">Flight Rig</option>
-        <option value="shared">Shared Peripherals</option>
-      </select>
-    </div>
-    <div class="field">
-      <label>Category</label>
-      <input list="cat-list" id="f-category" placeholder="e.g. Wheel Base">
-      <datalist id="cat-list"></datalist>
-    </div>
-    <div class="field">
-      <label>Part name</label>
-      <input id="f-name" placeholder="e.g. Fanatec CSL DD">
-    </div>
-    <div class="field">
-      <label>Image URL</label>
-      <input id="f-image" placeholder="https://...">
-    </div>
-    <div class="field">
-      <label>Store link</label>
-      <div class="link-row">
-        <input id="f-link" placeholder="https://...">
-        <button class="btn icon" id="fetch-price-btn" type="button" title="Reads the product page's own listing data for price, name, and image — no API key needed, works best on manufacturer/retailer sites">↺ Find price &amp; image</button>
-      </div>
-    </div>
-    <div class="field" id="fetch-status" style="display:none;"></div>
-    <div class="field">
-      <label>Price (USD)</label>
-      <input id="f-price" type="number" step="0.01" placeholder="599.99">
-    </div>
-    <div class="modal-actions">
-      <button class="btn" id="cancel-btn">Cancel</button>
-      <button class="btn primary" id="save-btn">Save Part</button>
-    </div>
-  </div>
-</div>
-
-<div class="toast" id="toast"></div>
-
 <script>
-const CATEGORIES = {
-  racing: ["Wheel Base","Wheel Rim","Pedals","Shifter / Handbrake","Seat","Rig Frame / Cockpit","Button Box","PC"],
-  flight: ["Yoke / Joystick","Throttle Quadrant","Rudder Pedals","Seat","Frame / Cockpit","MFD / Panel","PC"],
-  shared: ["Monitor","VR Headset","KVM Switch","Mouse","Keyboard","Webcam","Speakers / Headset","Monitor Mount","Desk","Chair"]
-};
 const THEME = {
   racing: { accent:"#e8542a", dim:"#4a2a1e", label:"Racing simulator — parts & pricing log", name:"Racing Rig" },
   flight: { accent:"#4fb8e8", dim:"#1e3a4a", label:"Flight simulator — parts & pricing log", name:"Flight Rig" },
   shared: { accent:"#a78bfa", dim:"#362f4a", label:"Shared peripherals — used by both rigs", name:"Shared Peripherals" },
-  alternates: { accent:"#e8c547", dim:"#4a3f1e", label:"Dream upgrades & budget swaps — ready to slot in", name:"Alternates" }
+  alternates: { accent:"#e8c547", dim:"#4a3f1e", label:"Dream upgrades & budget swaps under consideration", name:"Alternates" }
 };
 const RIG_ORDER = ["racing","flight","shared"];
 
-// window.storage only exists inside the Claude.ai artifact runtime. Once this file is
-// downloaded and opened locally (origin 'null'), it isn't reachable — detect that here
-// so parts storage can fall back to the browser's own localStorage instead.
-const IS_ARTIFACT_ENV = (typeof window.storage !== 'undefined' && window.storage !== null);
-const LOCAL_STORAGE_KEY = 'sim-rig-parts';
+const GITHUB_OWNER = 'nlucaccioni';
+const GITHUB_REPO = 'rig-build-sheet';
+const GITHUB_BRANCH = 'main';
+const DATA_PATH = 'data.json';
+const DATA_URL = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${DATA_PATH}`;
 
 let parts = [];
 let activeRig = "racing";
-let editingId = null;
-let currentView = "rig"; // 'rig' | 'alternates' | 'fullbuild'
-let modalIsAlternate = false;
+let notPublished = false; // true when data.json couldn't be fetched — drives empty-state copy, never blocks rendering
 
 const grid = document.getElementById('grid');
-const overlay = document.getElementById('overlay');
-const toastEl = document.getElementById('toast');
-
-function uid(){ return 'p_' + Math.random().toString(36).slice(2,10); }
 
 function money(n){
   return '$' + Number(n||0).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
 }
 
-function showToast(msg){
-  toastEl.textContent = msg;
-  toastEl.classList.add('show');
-  clearTimeout(showToast._t);
-  showToast._t = setTimeout(()=>toastEl.classList.remove('show'), 1800);
-}
+function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function escapeAttr(s){ return escapeHtml(s); }
 
 async function loadParts(){
   try{
-    if(IS_ARTIFACT_ENV){
-      const res = await window.storage.get('sim-rig-parts', false);
-      parts = res && res.value ? JSON.parse(res.value) : [];
-    } else {
-      const raw = localStorage.getItem(LOCAL_STORAGE_KEY);
-      parts = raw ? JSON.parse(raw) : [];
-    }
+    const res = await fetch(DATA_URL + '?t=' + Date.now());
+    if(!res.ok) throw new Error('not published');
+    parts = await res.json();
   }catch(e){
     parts = [];
+    notPublished = true;
   }
   render();
-}
-
-async function saveParts(){
-  try{
-    if(IS_ARTIFACT_ENV){
-      await window.storage.set('sim-rig-parts', JSON.stringify(parts), false);
-    } else {
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(parts));
-    }
-  }catch(e){
-    showToast('Could not save — try again');
-  }
 }
 
 function clearTabActive(){
@@ -364,7 +238,6 @@ function showView(id){
 }
 
 function setRig(rig){
-  currentView = 'rig';
   activeRig = rig;
   clearTabActive();
   document.getElementById('tab-'+rig).classList.add('active');
@@ -377,7 +250,6 @@ function setRig(rig){
 }
 
 function showAlternatesView(){
-  currentView = 'alternates';
   clearTabActive();
   document.getElementById('tab-alternates').classList.add('active');
   document.body.style.setProperty('--accent', THEME.alternates.accent);
@@ -389,7 +261,6 @@ function showAlternatesView(){
 }
 
 function showFullBuild(){
-  currentView = 'fullbuild';
   clearTabActive();
   document.getElementById('tab-fullbuild').classList.add('active');
   document.body.style.setProperty('--accent', '#e8e8ea');
@@ -444,7 +315,9 @@ function render(){
   document.getElementById('stat-total').textContent = money(total);
   document.getElementById('stat-count').textContent = list.length;
 
-  document.getElementById('empty-hint').style.display = list.length ? 'none' : 'block';
+  const emptyHint = document.getElementById('empty-hint');
+  emptyHint.style.display = list.length ? 'none' : 'block';
+  emptyHint.textContent = notPublished ? 'No build has been published yet — check back soon.' : 'Nothing logged yet for this rig.';
 
   grid.innerHTML = '';
   list.forEach(p=>{
@@ -463,20 +336,11 @@ function render(){
         <div class="price">${money(p.price)}</div>
         <div class="actions">
           ${p.link ? `<a class="btn link" href="${escapeAttr(p.link)}" target="_blank" rel="noopener">Store page ↗</a>` : `<span class="btn link" style="opacity:.4;cursor:default;">No link</span>`}
-          <button class="btn icon" title="Move to Alternates" onclick="demoteToAlternate('${p.id}')">⇄</button>
-          <button class="btn icon" title="Edit" onclick="openEdit('${p.id}')">✎</button>
-          <button class="btn icon danger" title="Remove" onclick="removePart('${p.id}')">✕</button>
         </div>
       </div>
     `;
     grid.appendChild(card);
   });
-
-  const addCard = document.createElement('div');
-  addCard.className = 'card add-card';
-  addCard.onclick = ()=>openAdd();
-  addCard.innerHTML = `<div class="plus">+</div><div class="txt">Add Part</div>`;
-  grid.appendChild(addCard);
 }
 
 function renderAlternates(){
@@ -485,7 +349,7 @@ function renderAlternates(){
 
   const header = `
     <div class="empty-hint" style="margin-bottom:16px;">
-      ${list.length ? `${list.length} alternate${list.length===1?'':'s'} on file — swap one in to replace what's currently active in that rig &amp; category.` : "No alternates yet — log a dream upgrade or a cheaper option below, then swap it into a rig whenever you're ready."}
+      ${list.length ? `${list.length} alternate${list.length===1?'':'s'} under consideration.` : (notPublished ? "No build has been published yet — check back soon." : "No alternates on file right now.")}
     </div>
     <div class="grid" id="alt-grid"></div>
   `;
@@ -508,323 +372,20 @@ function renderAlternates(){
       <div class="body">
         <div class="name">${escapeHtml(p.name || 'Untitled part')}</div>
         <div class="price">${money(p.price)}</div>
-        <div class="actions two-row">
-          <button class="btn swap" title="Make this the active part in its rig &amp; category" onclick="swapAlternateIn('${p.id}')">⇄ Swap into rig</button>
-          <div class="sub-row">
-            ${p.link ? `<a class="btn link" href="${escapeAttr(p.link)}" target="_blank" rel="noopener">Store page ↗</a>` : `<span class="btn link" style="opacity:.4;cursor:default;">No link</span>`}
-            <button class="btn icon" title="Edit" onclick="openEditAlternate('${p.id}')">✎</button>
-            <button class="btn icon danger" title="Remove" onclick="removePart('${p.id}')">✕</button>
-          </div>
+        <div class="actions">
+          ${p.link ? `<a class="btn link" href="${escapeAttr(p.link)}" target="_blank" rel="noopener">Store page ↗</a>` : `<span class="btn link" style="opacity:.4;cursor:default;">No link</span>`}
         </div>
       </div>
     `;
     altGrid.appendChild(card);
   });
-
-  const addCard = document.createElement('div');
-  addCard.className = 'card add-card';
-  addCard.onclick = ()=>openAddAlternate();
-  addCard.innerHTML = `<div class="plus">+</div><div class="txt">Add Alternate</div>`;
-  altGrid.appendChild(addCard);
 }
-
-function swapAlternateIn(id){
-  const alt = parts.find(p=>p.id===id);
-  if(!alt) return;
-  const cat = (alt.category||'').trim().toLowerCase();
-  const match = parts.find(p => p.id!==alt.id && p.rig===alt.rig && p.active!==false && (p.category||'').trim().toLowerCase()===cat);
-  alt.active = true;
-  if(match){
-    match.active = false;
-    showToast(`Swapped in ${alt.name} for ${match.name}`);
-  } else {
-    showToast(`${alt.name} added to ${THEME[alt.rig].name}`);
-  }
-  saveParts();
-  renderAlternates();
-}
-
-function demoteToAlternate(id){
-  const p = parts.find(x=>x.id===id);
-  if(!p) return;
-  p.active = false;
-  saveParts();
-  render();
-  showToast(`${p.name} moved to Alternates`);
-}
-
-function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-function escapeAttr(s){ return escapeHtml(s); }
-
-function openAdd(){
-  editingId = null;
-  modalIsAlternate = false;
-  document.getElementById('alt-rig-field').style.display = 'none';
-  document.getElementById('modal-title').textContent = 'Add Part — ' + THEME[activeRig].name;
-  document.getElementById('f-category').value = '';
-  document.getElementById('f-name').value = '';
-  document.getElementById('f-image').value = '';
-  document.getElementById('f-price').value = '';
-  document.getElementById('f-link').value = '';
-  setFetchStatus('', '');
-  populateDatalist(activeRig);
-  overlay.classList.add('show');
-  document.getElementById('f-category').focus();
-}
-
-function openEdit(id){
-  const p = parts.find(x=>x.id===id);
-  if(!p) return;
-  editingId = id;
-  modalIsAlternate = false;
-  document.getElementById('alt-rig-field').style.display = 'none';
-  document.getElementById('modal-title').textContent = 'Edit Part';
-  document.getElementById('f-category').value = p.category || '';
-  document.getElementById('f-name').value = p.name || '';
-  document.getElementById('f-image').value = p.image || '';
-  document.getElementById('f-price').value = p.price || '';
-  document.getElementById('f-link').value = p.link || '';
-  setFetchStatus('', '');
-  populateDatalist(p.rig || activeRig);
-  overlay.classList.add('show');
-}
-
-function openAddAlternate(){
-  editingId = null;
-  modalIsAlternate = true;
-  document.getElementById('alt-rig-field').style.display = 'block';
-  const altRigSelect = document.getElementById('f-altrig');
-  altRigSelect.value = altRigSelect.value || 'racing';
-  document.getElementById('modal-title').textContent = 'Add Alternate';
-  document.getElementById('f-category').value = '';
-  document.getElementById('f-name').value = '';
-  document.getElementById('f-image').value = '';
-  document.getElementById('f-price').value = '';
-  document.getElementById('f-link').value = '';
-  setFetchStatus('', '');
-  populateDatalist(altRigSelect.value);
-  overlay.classList.add('show');
-  document.getElementById('f-category').focus();
-}
-
-function openEditAlternate(id){
-  const p = parts.find(x=>x.id===id);
-  if(!p) return;
-  editingId = id;
-  modalIsAlternate = true;
-  document.getElementById('alt-rig-field').style.display = 'block';
-  document.getElementById('f-altrig').value = p.rig || 'racing';
-  document.getElementById('modal-title').textContent = 'Edit Alternate';
-  document.getElementById('f-category').value = p.category || '';
-  document.getElementById('f-name').value = p.name || '';
-  document.getElementById('f-image').value = p.image || '';
-  document.getElementById('f-price').value = p.price || '';
-  document.getElementById('f-link').value = p.link || '';
-  setFetchStatus('', '');
-  populateDatalist(p.rig || 'racing');
-  overlay.classList.add('show');
-}
-
-function populateDatalist(rig){
-  const dl = document.getElementById('cat-list');
-  dl.innerHTML = CATEGORIES[rig].map(c=>`<option value="${escapeAttr(c)}">`).join('');
-}
-
-function closeModal(){ overlay.classList.remove('show'); }
-
-async function savePart(){
-  const name = document.getElementById('f-name').value.trim();
-  if(!name){ showToast('Give the part a name'); return; }
-  const data = {
-    category: document.getElementById('f-category').value.trim() || 'Part',
-    name,
-    image: document.getElementById('f-image').value.trim(),
-    price: parseFloat(document.getElementById('f-price').value) || 0,
-    link: document.getElementById('f-link').value.trim(),
-  };
-  if(modalIsAlternate){
-    data.rig = document.getElementById('f-altrig').value;
-    data.active = false;
-  } else {
-    data.rig = activeRig;
-    data.active = true;
-  }
-  if(editingId){
-    const idx = parts.findIndex(p=>p.id===editingId);
-    if(idx>-1) parts[idx] = {...parts[idx], ...data};
-    showToast(modalIsAlternate ? 'Alternate updated' : 'Part updated');
-  }else{
-    parts.push({ id: uid(), ...data });
-    showToast(modalIsAlternate ? 'Alternate added' : 'Part added');
-  }
-  await saveParts();
-  closeModal();
-  if(modalIsAlternate){ renderAlternates(); } else { render(); }
-}
-
-async function removePart(id){
-  parts = parts.filter(p=>p.id!==id);
-  await saveParts();
-  if(currentView === 'alternates'){ renderAlternates(); } else { render(); }
-  showToast('Part removed');
-}
-
-function setFetchStatus(msg, kind){
-  const el = document.getElementById('fetch-status');
-  if(!msg){ el.style.display = 'none'; return; }
-  el.style.display = 'block';
-  el.innerHTML = `<div class="fetch-msg ${kind}">${escapeHtml(msg)}</div>`;
-}
-
-
-function absUrl(u, base){
-  try{ return new URL(u, base).href; }catch(e){ return u; }
-}
-
-function fetchWithTimeout(url, opts, ms){
-  return Promise.race([
-    fetch(url, opts),
-    new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), ms))
-  ]);
-}
-
-// Public, keyless relay services that fetch a page's HTML on our behalf — needed because
-// browsers block a page from directly reading another site's HTML (CORS). These are free
-// third-party services, not run by Anthropic, so we chain a few and treat any/all of them
-// failing as a normal, expected outcome.
-const CORS_PROXIES = [
-  u => 'https://corsproxy.io/?url=' + encodeURIComponent(u),
-  u => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u),
-  u => 'https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent(u)
-];
-
-async function fetchPageHtml(url){
-  for(const makeProxyUrl of CORS_PROXIES){
-    try{
-      const res = await fetchWithTimeout(makeProxyUrl(url), {}, 9000);
-      if(res.ok){
-        const html = await res.text();
-        if(html && html.length > 200) return html;
-      }
-    }catch(e){ /* this proxy failed or timed out — try the next one */ }
-  }
-  return null;
-}
-
-function parseProductFromHtml(html, baseUrl){
-  const doc = new DOMParser().parseFromString(html, 'text/html');
-  let name = null, image = null, price = null;
-
-  // 1. schema.org JSON-LD — the most reliable source, meant for search engines to read.
-  const ldScripts = doc.querySelectorAll('script[type="application/ld+json"]');
-  for(const script of ldScripts){
-    try{
-      const data = JSON.parse(script.textContent);
-      const candidates = Array.isArray(data) ? data : (data['@graph'] || [data]);
-      for(const item of candidates){
-        if(!item) continue;
-        const type = item['@type'];
-        const isProduct = type === 'Product' || (Array.isArray(type) && type.includes('Product'));
-        if(!isProduct) continue;
-        name = name || item.name || null;
-        let img = item.image;
-        if(Array.isArray(img)) img = img[0];
-        if(img && typeof img === 'object') img = img.url;
-        image = image || img || null;
-        let offers = item.offers;
-        if(Array.isArray(offers)) offers = offers[0];
-        if(offers) price = price || offers.price || offers.lowPrice || null;
-      }
-    }catch(e){ /* malformed JSON-LD block — skip it */ }
-  }
-
-  // 2. Open Graph / Twitter meta tags — fallback for image and name.
-  if(!image){
-    image = doc.querySelector('meta[property="og:image"]')?.getAttribute('content')
-      || doc.querySelector('meta[property="og:image:secure_url"]')?.getAttribute('content')
-      || doc.querySelector('meta[name="twitter:image"]')?.getAttribute('content')
-      || null;
-  }
-  if(!name){
-    name = doc.querySelector('meta[property="og:title"]')?.getAttribute('content')
-      || doc.querySelector('title')?.textContent
-      || null;
-  }
-  if(!price){
-    const metaPrice = doc.querySelector('meta[property="og:price:amount"]')?.getAttribute('content')
-      || doc.querySelector('meta[property="product:price:amount"]')?.getAttribute('content')
-      || doc.querySelector('[itemprop="price"]')?.getAttribute('content')
-      || doc.querySelector('[itemprop="price"]')?.textContent
-      || null;
-    if(metaPrice) price = metaPrice;
-  }
-
-  if(image) image = absUrl(image, baseUrl);
-  if(price){
-    const num = parseFloat(String(price).replace(/[^0-9.]/g, ''));
-    price = isNaN(num) ? null : num;
-  }
-  if(name) name = name.trim().replace(/\s+/g, ' ').slice(0, 200);
-
-  return { name, image, price };
-}
-
-async function fetchDetails(){
-  const link = document.getElementById('f-link').value.trim();
-  if(!link){ showToast('Add a store link first'); return; }
-
-  const btn = document.getElementById('fetch-price-btn');
-  const original = btn.textContent;
-  btn.textContent = 'Reading page…';
-  btn.disabled = true;
-  setFetchStatus('Reading the product page…', 'fail');
-
-  try{
-    const html = await fetchPageHtml(link);
-    if(!html){
-      setFetchStatus("Couldn't reach that page (it may block automated access) — enter details manually.", 'fail');
-      btn.textContent = original;
-      btn.disabled = false;
-      return;
-    }
-
-    const result = parseProductFromHtml(html, link);
-    let found = [];
-    if(result.price){
-      document.getElementById('f-price').value = result.price.toFixed(2);
-      found.push('price');
-    }
-    if(result.image){
-      document.getElementById('f-image').value = result.image;
-      found.push('image');
-    }
-    if(result.name && !document.getElementById('f-name').value.trim()){
-      document.getElementById('f-name').value = result.name;
-    }
-
-    if(found.length){
-      setFetchStatus(`Found ${found.join(' & ')} on the page — double-check before saving.`, 'ok');
-    } else {
-      setFetchStatus("Page loaded, but didn't contain readable product data — enter details manually.", 'fail');
-    }
-  }catch(e){
-    setFetchStatus("Something went wrong reading that page — enter details manually.", 'fail');
-  }
-  btn.textContent = original;
-  btn.disabled = false;
-}
-
-document.getElementById('fetch-price-btn').onclick = fetchDetails;
 
 document.getElementById('tab-racing').onclick = ()=>setRig('racing');
 document.getElementById('tab-flight').onclick = ()=>setRig('flight');
 document.getElementById('tab-shared').onclick = ()=>setRig('shared');
 document.getElementById('tab-alternates').onclick = ()=>showAlternatesView();
 document.getElementById('tab-fullbuild').onclick = ()=>showFullBuild();
-document.getElementById('f-altrig').onchange = (e)=>populateDatalist(e.target.value);
-document.getElementById('cancel-btn').onclick = closeModal;
-document.getElementById('save-btn').onclick = savePart;
-overlay.addEventListener('click', e=>{ if(e.target===overlay) closeModal(); });
 
 loadParts();
 </script>
