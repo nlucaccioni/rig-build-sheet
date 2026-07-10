@@ -130,6 +130,9 @@
     display:flex; flex-direction:column; transition: border-color .2s ease, transform .15s ease;
   }
   .card:hover{ border-color: var(--accent); transform: translateY(-2px); }
+  .card:not(.add-card){ cursor:grab; }
+  .card.dragging{ opacity:0.4; cursor:grabbing; }
+  .card.drop-target{ outline:2px solid var(--accent); outline-offset:-2px; }
   .card .img-wrap{
     aspect-ratio: 4/3; background:var(--panel-2); display:flex; align-items:center; justify-content:center;
     overflow:hidden; position:relative;
@@ -385,6 +388,7 @@ let activeRig = "racing";
 let editingId = null;
 let currentView = "rig"; // 'rig' | 'alternates' | 'fullbuild'
 let modalIsAlternate = false;
+let draggingId = null;
 
 const grid = document.getElementById('grid');
 const overlay = document.getElementById('overlay');
@@ -658,6 +662,54 @@ function renderFullBuild(){
 
 function partsForRig(){ return parts.filter(p => p.rig === activeRig && p.active !== false); }
 
+// Reorders `parts` within a filtered subset (e.g. one rig's active parts, or all alternates)
+// while leaving every other part's position in the full array untouched — the subset's own
+// slot positions in `parts` stay fixed, only which part occupies each slot changes.
+function reorderParts(draggedId, targetId, predicate){
+  const list = parts.filter(predicate);
+  const fromIdx = list.findIndex(p=>p.id===draggedId);
+  const toIdx = list.findIndex(p=>p.id===targetId);
+  if(fromIdx===-1 || toIdx===-1 || fromIdx===toIdx) return false;
+  const [moved] = list.splice(fromIdx,1);
+  list.splice(toIdx,0,moved);
+  const positions = [];
+  parts.forEach((p,i)=>{ if(predicate(p)) positions.push(i); });
+  list.forEach((p,idx)=>{ parts[positions[idx]] = p; });
+  return true;
+}
+
+function setupDragReorder(containerEl, predicate, rerender){
+  containerEl.addEventListener('dragstart', e=>{
+    const card = e.target.closest('.card:not(.add-card)');
+    if(!card) return;
+    draggingId = card.dataset.id;
+    card.classList.add('dragging');
+  });
+  containerEl.addEventListener('dragend', ()=>{
+    containerEl.querySelectorAll('.dragging').forEach(el=>el.classList.remove('dragging'));
+    containerEl.querySelectorAll('.drop-target').forEach(el=>el.classList.remove('drop-target'));
+    draggingId = null;
+  });
+  containerEl.addEventListener('dragover', e=>{
+    if(!draggingId) return;
+    const card = e.target.closest('.card:not(.add-card)');
+    if(!card || card.dataset.id === draggingId) return;
+    e.preventDefault();
+    containerEl.querySelectorAll('.drop-target').forEach(el=>el.classList.remove('drop-target'));
+    card.classList.add('drop-target');
+  });
+  containerEl.addEventListener('drop', e=>{
+    e.preventDefault();
+    const card = e.target.closest('.card:not(.add-card)');
+    containerEl.querySelectorAll('.drop-target').forEach(el=>el.classList.remove('drop-target'));
+    if(!card || !draggingId || card.dataset.id === draggingId) return;
+    if(reorderParts(draggingId, card.dataset.id, predicate)){
+      saveParts();
+      rerender();
+    }
+  });
+}
+
 function render(){
   const list = partsForRig();
   const total = list.reduce((s,p)=>s+Number(p.price||0),0);
@@ -670,6 +722,8 @@ function render(){
   list.forEach(p=>{
     const card = document.createElement('div');
     card.className = 'card';
+    card.draggable = true;
+    card.dataset.id = p.id;
     const imgHtml = p.image
       ? `<img src="${escapeAttr(p.image)}" onerror="this.parentElement.innerHTML='<div class=&quot;ph&quot;>Image unavailable</div>'" alt="${escapeAttr(p.name)}">`
       : `<div class="ph">No image</div>`;
@@ -716,6 +770,8 @@ function renderAlternates(){
     const rigTheme = THEME[p.rig] || THEME.racing;
     const card = document.createElement('div');
     card.className = 'card';
+    card.draggable = true;
+    card.dataset.id = p.id;
     const imgHtml = p.image
       ? `<img src="${escapeAttr(p.image)}" onerror="this.parentElement.innerHTML='<div class=&quot;ph&quot;>Image unavailable</div>'" alt="${escapeAttr(p.name)}">`
       : `<div class="ph">No image</div>`;
@@ -1081,6 +1137,9 @@ function updateTabScrollFade(){
 document.getElementById('tabs').addEventListener('scroll', updateTabScrollFade);
 window.addEventListener('resize', updateTabScrollFade);
 updateTabScrollFade();
+
+setupDragReorder(document.getElementById('rig-view'), p => p.rig === activeRig && p.active !== false, render);
+setupDragReorder(document.getElementById('alternates-view'), p => p.active === false, renderAlternates);
 
 document.getElementById('tab-racing').onclick = ()=>setRig('racing');
 document.getElementById('tab-flight').onclick = ()=>setRig('flight');
