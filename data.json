@@ -6,7 +6,8 @@
     "image": "https://us.mozaracing.com/cdn/shop/files/mBooster_Pedal_Set_with_CRP2_Throttle_-1.png?v=1767606139&width=1000",
     "price": 949,
     "link": "https://us.mozaracing.com/products/mbooster-pedal-set",
-    "rig": "racing"
+    "rig": "racing",
+    "active": true
   },
   {
     "id": "p_t3enjktt",
@@ -38,11 +39,231 @@
   },
   {
     "id": "p_sy1y78ky",
-    "category": "Shifter",
+    "category": "H Shifter",
     "name": "MOZA   HGP   Shifter",
     "image": "https://us.mozaracing.com/cdn/shop/files/MOZA-HGP-Shifter-1-update_f0b2312d-685e-40d4-a483-2d63358141fc.webp?v=1752745275&width=1000",
     "price": 149,
     "link": "https://us.mozaracing.com/products/hgp-shifter",
+    "rig": "racing",
+    "active": true
+  },
+  {
+    "id": "p_09y3dh3t",
+    "category": "Rudder Pedals",
+    "name": "MOZA MRP Rudder Pedals",
+    "image": "https://us.mozaracing.com/cdn/shop/files/moza-mrp-rudder-pedals-1.jpg?v=1767606197&width=1920",
+    "price": 349,
+    "link": "https://us.mozaracing.com/products/mrp-rudder-pedals",
+    "rig": "flight",
+    "active": true
+  },
+  {
+    "id": "p_0el5rkp6",
+    "category": "Instrument Panel",
+    "name": "MOZA MGX1000 Instrument Panel",
+    "image": "https://us.mozaracing.com/cdn/shop/files/MGX1000InstrumentPanel-2.png?v=1783499795&width=1920",
+    "price": 449,
+    "link": "https://us.mozaracing.com/products/mgx1000",
+    "rig": "flight",
+    "active": true
+  },
+  {
+    "id": "p_txjqjr04",
+    "category": "Throttle",
+    "name": "MOZA MTQ Throttle Quadrant",
+    "image": "https://us.mozaracing.com/cdn/shop/files/MOZAMTQ-1_507a29a2-917a-4b1e-955d-07f9fd0386ff.png?v=1767606216&width=1920",
+    "price": 199,
+    "link": "https://us.mozaracing.com/products/mtq-throttle?pr_prod_strat=jac&pr_rec_id=18260a209&pr_rec_pid=10093014122798&pr_ref_pid=10090896982318&pr_seq=uniform",
+    "rig": "flight",
+    "active": true
+  },
+  {
+    "id": "p_1mc5rvrj",
+    "category": "Throttle",
+    "name": "MOZA TQA Throttle Module",
+    "image": "https://us.mozaracing.com/cdn/shop/files/MOZATQAThrottleModule-1.png?v=1761114786&width=1920",
+    "price": 39,
+    "link": "https://us.mozaracing.com/products/tqa-mod",
+    "rig": "flight",
+    "active": true
+  },
+  {
+    "id": "p_uqf3jels",
+    "category": "PC",
+    "name": "Gaming PC",
+    "image": "https://www.fractal-design.com/app/uploads/2024/02/North_XL_Charcoal_TGD_1-Left-Front-1440x1440.jpg",
+    "price": 7500,
+    "link": "",
+    "rig": "shared",
+    "active": true
+  },
+  {
+    "id": "p_b5jp4t1p",
+    "category": "Wheel",
+    "name": "MOZA GS V2P GT Wheel",
+    "image": "https://us.mozaracing.com/cdn/shop/files/GS_V2P_GT_Wheel-1_9656c251-d9d9-48e3-8b24-099b8d128ca1.webp?v=1752745276&width=1920",
+    "price": 369,
+    "link": "https://us.mozaracing.com/products/gs-v2p-gt-wheel?_pos=10&_fid=9a027eca4&_ss=c",
+    "rig": "racing",
+    "active": false
+  },
+  {
+    "id": "p_oivw7dg2",
+    "category": "VR Headset",
+    "name": "Pimax Crystal Light",
+    "image": "https://pimax.com/cdn/shop/files/product_pimaxcrystallight_headsetwithcontrollers_2405_00537d9f-5f8a-4ca0-ba20-07de3b678991.webp?v=1754989215&width=550",
+    "price": 899,
+    "link": "https://pimax.com/products/pimax-crystal-light",
+    "rig": "shared",
+    "active": true
+  },
+  {
+    "id": "p_it5lptne",
+    "category": "Monitor",
+    "name": "Samsung - 57\" Odyssey Neo G9",
+    "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/8cf286e4-a41f-4605-9d06-b9fa9450529f.jpg;maxHeight=1080;maxWidth=900?format=webp",
+    "price": 2099,
+    "link": "https://www.bestbuy.com/product/samsung-57-odyssey-neo-g9-dual-4k-uhd-quantum-mini-led-240hz-1ms-hdr-1000-curved-gaming-monitor-hdmi-2-1-dp-2-1-usb-3-0-black/J3ZYG29PK6/sku/6549291?utm_source=feed&extStoreId=&ref=212&loc=20606267184&gclsrc=aw.ds&gad_source=1&gad_campaignid=20615841985&gbraid=0AAAAAD-ORIi_5fHdg5a4mD4LZ0WCbkFXq&gclid=Cj0KCQjwsMLSBhD9ARIsAIpUTDpPPhtbLPMbUYV6NkPXanYCrqOOOGSC8X0dRPPs3YIN321nFaqEdV8aAvhKEALw_wcB",
+    "rig": "shared",
+    "active": true
+  },
+  {
+    "id": "p_jos9xvjt",
+    "category": "Monitor",
+    "name": "SAMSUNG 49\" Odyssey G9 (G95C) 240Hz",
+    "image": "https://m.media-amazon.com/images/I/61IC-Ryb-HL._AC_SL1500_.jpg",
+    "price": 919,
+    "link": "https://www.amazon.com/SAMSUNG-Odyssey-DisplayHDR-FreeSync-LS49CG950ENXZA/dp/B0DHJBWY52/ref=sr_1_1?dib=eyJ2IjoiMSJ9.dDZEUy_jmXaoCd5iG53eqP5FAQ83vXTJFwEFVygatDF4g5MPfiYWrTX8eKkkhv8ffZQBTXb7Xz3oKl5ZvD3S1mnGGPPFSSESYbwQ2iSTx6WokMLk-axjJxWpwP9Hwa-S99CZvU3OHz6Q3ce3IYIkbLOOWinr5OJLpDYQHKUnpBJGG6sZYjwuILJGdcteEux5CaeyuV3Yp7KLCh8ZwC4FLsiQfQDPhQOWDvK0nO-_ERI.VOFF9E1-epw8VZ7Ncx1dv8m1zqLFBvGzFHzKAMqoCoA&dib_tag=se&geniuslink=true&keywords=Samsung%2BLS49CG954SUXEN&qid=1783698808&sr=8-1&th=1",
+    "rig": "shared",
+    "active": false
+  },
+  {
+    "id": "p_iyokss90",
+    "category": "Monitor",
+    "name": "ASUS ROG Strix XG49VQ 49” Curved Gaming FreeSync Monitor 144Hz",
+    "image": "https://m.media-amazon.com/images/I/61hU8f9TLzL._AC_SL1500_.jpg",
+    "price": 804,
+    "link": "https://www.amazon.com/XG49VQ-Curved-Gaming-FreeSync-Monitor/dp/B07PZR2YY4/ref=sr_1_1?dib=eyJ2IjoiMSJ9.fyl9x6GhfAU3novMlBBmLkZU5NR_vJddz3qGNKJjqOJMeWirHBnKqdER82DMa-ASsdfrlyJf6rW5t0QehF2fQQFGQJbCTCqeWvkpq1IX7gKJpOHDDJBwOPIYbXg1reDZrWKF6YQOH7jA-nLff85sEJ7D2aBeMAtElzkIAYiGOv09xZtoBHD4yRPqSoae2t98br7dAvTQ3QGxVxcQsKfJ_3e4ODQHieHRVxAvgFkaVNc.klUYz7ft227kMqqSvOq20U-BG_2qdRZnyNJck5LoBbs&dib_tag=se&geniuslink=true&keywords=ASUS%2BROG%2BSTRIX%2BCurved&qid=1783698806&sr=8-1&th=1",
+    "rig": "shared",
+    "active": false
+  },
+  {
+    "id": "p_jt9rjypp",
+    "category": "Pedals",
+    "name": "MOZA CRP2 Load Cell Pedals (Throttle+Brake)",
+    "image": "https://us.mozaracing.com/cdn/shop/files/MOZA_CRP2_Load_Cell_Pedals.webp?v=1767606090&width=1920",
+    "price": 369,
+    "link": "https://us.mozaracing.com/products/crp2-pedals?_pos=3&_fid=f77667a78&_ss=c",
+    "rig": "racing",
+    "active": false
+  },
+  {
+    "id": "p_jckbv7dh",
+    "category": "Clutch Pedal",
+    "name": "MOZA CRP2 Load Cell Clutch Pedal",
+    "image": "https://us.mozaracing.com/cdn/shop/files/CRP2_Clutch_Pedal.webp?v=1751281051&width=1920",
+    "price": 99,
+    "link": "https://us.mozaracing.com/products/crp2-clutch?_pos=4&_fid=f77667a78&_ss=c",
+    "rig": "racing",
+    "active": false
+  },
+  {
+    "id": "p_fx3q2vnx",
+    "category": "Clutch Pedal",
+    "name": "MOZA mBooster Active Pedals",
+    "image": "https://us.mozaracing.com/cdn/shop/files/MOZA_mBooster_Active_Pedal_-_1_1007.png?v=1759992399&width=1920",
+    "price": 759,
+    "link": "https://us.mozaracing.com/products/mbooster-active-pedal?_pos=2&_fid=f77667a78&_ss=c",
+    "rig": "racing",
+    "active": false
+  },
+  {
+    "id": "p_9vcq310j",
+    "category": "S Shifter",
+    "name": "MOZA SGP Sequential Shifter",
+    "image": "https://us.mozaracing.com/cdn/shop/files/SGP_Sequential_Shifter-1.png?v=1767606044&width=1920",
+    "price": 129,
+    "link": "https://us.mozaracing.com/products/sgp-shifter?_pos=12&_fid=40fa23462&_ss=c",
+    "rig": "racing",
+    "active": true
+  },
+  {
+    "id": "p_zymko11m",
+    "category": "HOTAS",
+    "name": "MOZA AB6 Flight Simulator",
+    "image": "https://us.mozaracing.com/cdn/shop/files/MOZA_AB6_Flight_Simulator_-2_f224f7f0-2a9b-45c0-bee7-b8ef371695f9.png?v=1761816017&width=1920",
+    "price": 399,
+    "link": "https://us.mozaracing.com/products/ab6-bundle",
+    "rig": "flight",
+    "active": false
+  },
+  {
+    "id": "p_ge0prrjc",
+    "category": "Full Cirrus Rig",
+    "name": "SRx Pro AATD",
+    "image": "http://realsimgear.com/cdn/shop/files/SRxPro_5.jpg?v=1742497990",
+    "price": 45995,
+    "link": "https://realsimgear.com/products/srx-pro-aatd",
+    "rig": "flight",
+    "active": false
+  },
+  {
+    "id": "p_u10xeh1m",
+    "category": "Simulator Platform",
+    "name": "RealSimGear YokeTop Simulator Package",
+    "image": "http://realsimgear.com/cdn/shop/products/YoketopFlightSimulator2.png?v=1681349110",
+    "price": 2699,
+    "link": "https://realsimgear.com/products/realsimgear-yoketop-simulator-package",
+    "rig": "flight",
+    "active": false
+  },
+  {
+    "id": "p_xcuv63lh",
+    "category": "Yoke Base + Yoke",
+    "name": "ALPHA FLIGHT CONTROLS",
+    "image": "https://flyhoneycomb.com/cdn/shop/files/SB003011_ALPHAFLIGHTCONTROLS_1.jpg?v=1756653078&width=1920",
+    "price": 299.99,
+    "link": "https://flyhoneycomb.com/collections/hardware/products/alpha-flight-controls",
+    "rig": "flight",
+    "active": false
+  },
+  {
+    "id": "p_ad5zmlju",
+    "category": "Throttle",
+    "name": "BRAVO THROTTLE QUADRANT",
+    "image": "https://flyhoneycomb.com/cdn/shop/files/HC003042_BravoThrottleQuadrant_1.jpg?v=1756653266&width=1920",
+    "price": 299.99,
+    "link": "https://flyhoneycomb.com/collections/hardware/products/bravo-throttle-quadrant",
+    "rig": "flight",
+    "active": false
+  },
+  {
+    "id": "p_kk2uh31k",
+    "category": "Motion Platform",
+    "name": "Motion Flight Sim - 6-Axis HERO (H6) with SFU and Xtra Smooth Gearing",
+    "image": "https://dofreality.com/wp-content/uploads/2024/01/h6_flight_0.png",
+    "price": 7220,
+    "link": "https://dofreality.com/product/flight/motion-flight-sim-6-axis-hero-h6/",
+    "rig": "flight",
+    "active": true
+  },
+  {
+    "id": "p_7gxa8hej",
+    "category": "Motion Platform",
+    "name": "Motion Flight Sim - 4-Axis HERO (H4) with SFU and Xtra Smooth Gearing",
+    "image": "https://dofreality.com/wp-content/uploads/h4_flight_0.png",
+    "price": 4180,
+    "link": "https://dofreality.com/product/flight/motion-flight-sim-4-axis-hero-h4-with-sfu-and-xtra-smooth-gearing/",
+    "rig": "flight",
+    "active": false
+  },
+  {
+    "id": "p_92tq6q4h",
+    "category": "Frame",
+    "name": "TR160 V5 Racing Simulator with Seat Slider Kit",
+    "image": "https://trakracer.com/cdn/shop/files/TR1605Blacke-cm05-min_d3dbb0cb-e499-4a52-81c5-abb112834010_1024x1024.png?v=1734837861",
+    "price": 1307,
+    "link": "https://trakracer.com/collections/racing-simulators/products/tr160-v5?variant=45626956972223",
     "rig": "racing",
     "active": true
   }
