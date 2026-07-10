@@ -1,5 +1,14 @@
 [
   {
+    "id": "p_t3enjktt",
+    "category": "Wheel Base + Wheel",
+    "name": "R12 V2 and RS V2 Bundle",
+    "image": "https://us.mozaracing.com/cdn/shop/files/R12RSV2_082.png?v=1752820272&width=1000",
+    "price": 739,
+    "link": "https://us.mozaracing.com/products/r12-rs-bundle",
+    "rig": "racing"
+  },
+  {
     "id": "p_9vkwkb8n",
     "category": "Pedals",
     "name": "MOZA mBooster Active Pedal Set (with CRP2 Throttle)",
@@ -8,15 +17,6 @@
     "link": "https://us.mozaracing.com/products/mbooster-pedal-set",
     "rig": "racing",
     "active": true
-  },
-  {
-    "id": "p_t3enjktt",
-    "category": "Wheel Base + Wheel",
-    "name": "R12 V2 and RS V2 Bundle",
-    "image": "https://us.mozaracing.com/cdn/shop/files/R12RSV2_082.png?v=1752820272&width=1000",
-    "price": 739,
-    "link": "https://us.mozaracing.com/products/r12-rs-bundle",
-    "rig": "racing"
   },
   {
     "id": "p_izmv7by2",
@@ -58,13 +58,13 @@
     "active": true
   },
   {
-    "id": "p_0el5rkp6",
-    "category": "Instrument Panel",
-    "name": "MOZA MGX1000 Instrument Panel",
-    "image": "https://us.mozaracing.com/cdn/shop/files/MGX1000InstrumentPanel-2.png?v=1783499795&width=1920",
-    "price": 449,
-    "link": "https://us.mozaracing.com/products/mgx1000",
-    "rig": "flight",
+    "id": "p_jg3tgdk2",
+    "category": "H Shifter",
+    "name": "BDH Active Shifter",
+    "image": "https://bdh-assets.lon1.cdn.digitaloceanspaces.com/images/active-carousel/active-black_v2/active_1.avif",
+    "price": 2470,
+    "link": "https://bdhracesim.com/us/products/active/",
+    "rig": "racing",
     "active": false
   },
   {
@@ -98,12 +98,12 @@
     "active": true
   },
   {
-    "id": "p_b5jp4t1p",
-    "category": "Wheel",
-    "name": "MOZA GS V2P GT Wheel",
-    "image": "https://us.mozaracing.com/cdn/shop/files/GS_V2P_GT_Wheel-1_9656c251-d9d9-48e3-8b24-099b8d128ca1.webp?v=1752745276&width=1920",
-    "price": 369,
-    "link": "https://us.mozaracing.com/products/gs-v2p-gt-wheel?_pos=10&_fid=9a027eca4&_ss=c",
+    "id": "p_qcosonda",
+    "category": "Motion Platform",
+    "name": "Motion System with 4 motors/actuators and Motion Sim Base",
+    "image": "https://trakracer.com/cdn/shop/files/DBOX-4-BASE.3_ddbe4839-3dd7-401a-bb5e-de98b7f3a72c_1080x.png?v=1697525305",
+    "price": 6389,
+    "link": "https://trakracer.com/collections/motion-haptics-sound/products/copy-of-d-box-gen-5-4250i-haptic-system-with-4-motion-actuators-1-5-stroke-travel-range",
     "rig": "racing",
     "active": false
   },
@@ -128,6 +128,26 @@
     "active": true
   },
   {
+    "id": "p_b5jp4t1p",
+    "category": "Wheel",
+    "name": "MOZA GS V2P GT Wheel",
+    "image": "https://us.mozaracing.com/cdn/shop/files/GS_V2P_GT_Wheel-1_9656c251-d9d9-48e3-8b24-099b8d128ca1.webp?v=1752745276&width=1920",
+    "price": 369,
+    "link": "https://us.mozaracing.com/products/gs-v2p-gt-wheel?_pos=10&_fid=9a027eca4&_ss=c",
+    "rig": "racing",
+    "active": false
+  },
+  {
+    "id": "p_0el5rkp6",
+    "category": "Instrument Panel",
+    "name": "MOZA MGX1000 Instrument Panel",
+    "image": "https://us.mozaracing.com/cdn/shop/files/MGX1000InstrumentPanel-2.png?v=1783499795&width=1920",
+    "price": 449,
+    "link": "https://us.mozaracing.com/products/mgx1000",
+    "rig": "flight",
+    "active": false
+  },
+  {
     "id": "p_jos9xvjt",
     "category": "Monitor",
     "name": "SAMSUNG 49\" Odyssey G9 (G95C) 240Hz",
@@ -146,6 +166,26 @@
     "link": "https://www.amazon.com/XG49VQ-Curved-Gaming-FreeSync-Monitor/dp/B07PZR2YY4/ref=sr_1_1?dib=eyJ2IjoiMSJ9.fyl9x6GhfAU3novMlBBmLkZU5NR_vJddz3qGNKJjqOJMeWirHBnKqdER82DMa-ASsdfrlyJf6rW5t0QehF2fQQFGQJbCTCqeWvkpq1IX7gKJpOHDDJBwOPIYbXg1reDZrWKF6YQOH7jA-nLff85sEJ7D2aBeMAtElzkIAYiGOv09xZtoBHD4yRPqSoae2t98br7dAvTQ3QGxVxcQsKfJ_3e4ODQHieHRVxAvgFkaVNc.klUYz7ft227kMqqSvOq20U-BG_2qdRZnyNJck5LoBbs&dib_tag=se&geniuslink=true&keywords=ASUS%2BROG%2BSTRIX%2BCurved&qid=1783698806&sr=8-1&th=1",
     "rig": "shared",
     "active": false
+  },
+  {
+    "id": "p_fx3q2vnx",
+    "category": "Clutch Pedal",
+    "name": "MOZA mBooster Active Pedals",
+    "image": "https://us.mozaracing.com/cdn/shop/files/MOZA_mBooster_Active_Pedal_-_1_1007.png?v=1759992399&width=1920",
+    "price": 759,
+    "link": "https://us.mozaracing.com/products/mbooster-active-pedal?_pos=2&_fid=f77667a78&_ss=c",
+    "rig": "racing",
+    "active": true
+  },
+  {
+    "id": "p_9vcq310j",
+    "category": "S Shifter",
+    "name": "MOZA SGP Sequential Shifter",
+    "image": "https://us.mozaracing.com/cdn/shop/files/SGP_Sequential_Shifter-1.png?v=1767606044&width=1920",
+    "price": 129,
+    "link": "https://us.mozaracing.com/products/sgp-shifter?_pos=12&_fid=40fa23462&_ss=c",
+    "rig": "racing",
+    "active": true
   },
   {
     "id": "p_jt9rjypp",
@@ -168,26 +208,6 @@
     "active": false
   },
   {
-    "id": "p_fx3q2vnx",
-    "category": "Clutch Pedal",
-    "name": "MOZA mBooster Active Pedals",
-    "image": "https://us.mozaracing.com/cdn/shop/files/MOZA_mBooster_Active_Pedal_-_1_1007.png?v=1759992399&width=1920",
-    "price": 759,
-    "link": "https://us.mozaracing.com/products/mbooster-active-pedal?_pos=2&_fid=f77667a78&_ss=c",
-    "rig": "racing",
-    "active": false
-  },
-  {
-    "id": "p_9vcq310j",
-    "category": "S Shifter",
-    "name": "MOZA SGP Sequential Shifter",
-    "image": "https://us.mozaracing.com/cdn/shop/files/SGP_Sequential_Shifter-1.png?v=1767606044&width=1920",
-    "price": 129,
-    "link": "https://us.mozaracing.com/products/sgp-shifter?_pos=12&_fid=40fa23462&_ss=c",
-    "rig": "racing",
-    "active": true
-  },
-  {
     "id": "p_zymko11m",
     "category": "HOTAS",
     "name": "MOZA AB6 Flight Simulator",
@@ -195,7 +215,7 @@
     "price": 399,
     "link": "https://us.mozaracing.com/products/ab6-bundle",
     "rig": "flight",
-    "active": false
+    "active": true
   },
   {
     "id": "p_ge0prrjc",
@@ -218,26 +238,6 @@
     "active": false
   },
   {
-    "id": "p_xcuv63lh",
-    "category": "Yoke Base + Yoke",
-    "name": "ALPHA FLIGHT CONTROLS",
-    "image": "https://flyhoneycomb.com/cdn/shop/files/SB003011_ALPHAFLIGHTCONTROLS_1.jpg?v=1756653078&width=1920",
-    "price": 299.99,
-    "link": "https://flyhoneycomb.com/collections/hardware/products/alpha-flight-controls",
-    "rig": "flight",
-    "active": false
-  },
-  {
-    "id": "p_ad5zmlju",
-    "category": "Throttle",
-    "name": "BRAVO THROTTLE QUADRANT",
-    "image": "https://flyhoneycomb.com/cdn/shop/files/HC003042_BravoThrottleQuadrant_1.jpg?v=1756653266&width=1920",
-    "price": 299.99,
-    "link": "https://flyhoneycomb.com/collections/hardware/products/bravo-throttle-quadrant",
-    "rig": "flight",
-    "active": false
-  },
-  {
     "id": "p_kk2uh31k",
     "category": "Motion Platform",
     "name": "Motion Flight Sim - 6-Axis HERO (H6) with SFU and Xtra Smooth Gearing",
@@ -248,12 +248,12 @@
     "active": true
   },
   {
-    "id": "p_7gxa8hej",
-    "category": "Motion Platform",
-    "name": "Motion Flight Sim - 4-Axis HERO (H4) with SFU and Xtra Smooth Gearing",
-    "image": "https://dofreality.com/wp-content/uploads/h4_flight_0.png",
-    "price": 4180,
-    "link": "https://dofreality.com/product/flight/motion-flight-sim-4-axis-hero-h4-with-sfu-and-xtra-smooth-gearing/",
+    "id": "p_xcuv63lh",
+    "category": "Yoke Base + Yoke",
+    "name": "ALPHA FLIGHT CONTROLS",
+    "image": "https://flyhoneycomb.com/cdn/shop/files/SB003011_ALPHAFLIGHTCONTROLS_1.jpg?v=1756653078&width=1920",
+    "price": 299.99,
+    "link": "https://flyhoneycomb.com/collections/hardware/products/alpha-flight-controls",
     "rig": "flight",
     "active": false
   },
@@ -262,7 +262,7 @@
     "category": "Frame",
     "name": "TR160 V5 Racing Simulator with Seat Slider Kit",
     "image": "https://trakracer.com/cdn/shop/files/TR1605Blacke-cm05-min_d3dbb0cb-e499-4a52-81c5-abb112834010_1024x1024.png?v=1734837861",
-    "price": 1307,
+    "price": 1018,
     "link": "https://trakracer.com/collections/racing-simulators/products/tr160-v5?variant=45626956972223",
     "rig": "racing",
     "active": true
@@ -286,5 +286,45 @@
     "link": "https://trakracer.com/collections/monitor-stands/products/tr8020-single-monitor-stand-2",
     "rig": "shared",
     "active": true
+  },
+  {
+    "id": "p_2ndlk1f3",
+    "category": "Seat",
+    "name": "GT Pro Racing Seat - Fiberglass - Black",
+    "image": "https://trakracer.com/cdn/shop/files/SA-10-MD_Hero2_1800x1800.webp?v=1781692722",
+    "price": 399,
+    "link": "https://trakracer.com/collections/seats-seat-add-ons/products/gt-pro-racing-seat-fiberglass-black?variant=45676379799743",
+    "rig": "racing",
+    "active": true
+  },
+  {
+    "id": "p_3kl244e7",
+    "category": "Frame Accessories",
+    "name": "Table Top/Desk with Swivel Mount for Extruded Rigs",
+    "image": "https://trakracer.com/cdn/shop/products/TR80-SHELF4-BLK.1_1800x1800.png?v=1707130048",
+    "price": 99,
+    "link": "https://trakracer.com/products/copy-of-tr8020-620mm-table-top-desk-with-swivel-mount-black?variant=42140370960575",
+    "rig": "racing",
+    "active": true
+  },
+  {
+    "id": "p_ad5zmlju",
+    "category": "Throttle",
+    "name": "BRAVO THROTTLE QUADRANT",
+    "image": "https://flyhoneycomb.com/cdn/shop/files/HC003042_BravoThrottleQuadrant_1.jpg?v=1756653266&width=1920",
+    "price": 299.99,
+    "link": "https://flyhoneycomb.com/collections/hardware/products/bravo-throttle-quadrant",
+    "rig": "flight",
+    "active": false
+  },
+  {
+    "id": "p_7gxa8hej",
+    "category": "Motion Platform",
+    "name": "Motion Flight Sim - 4-Axis HERO (H4) with SFU and Xtra Smooth Gearing",
+    "image": "https://dofreality.com/wp-content/uploads/h4_flight_0.png",
+    "price": 4180,
+    "link": "https://dofreality.com/product/flight/motion-flight-sim-4-axis-hero-h4-with-sfu-and-xtra-smooth-gearing/",
+    "rig": "flight",
+    "active": false
   }
 ]
