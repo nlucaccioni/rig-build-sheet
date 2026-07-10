@@ -266,5 +266,25 @@
     "link": "https://trakracer.com/collections/racing-simulators/products/tr160-v5?variant=45626956972223",
     "rig": "racing",
     "active": true
+  },
+  {
+    "id": "p_rsbbgr98",
+    "category": "Monitor Stand",
+    "name": "Freestanding Triple Monitor Stand - Supports up to 45\" Displays",
+    "image": "https://trakracer.com/cdn/shop/files/MS-CM-SIN-TR2_01_5a68334a-844a-435f-b140-a1f79c290443_1800x1800.png?v=1746416521",
+    "price": 439,
+    "link": "https://trakracer.com/collections/monitor-stands/products/floor-triple-monitor-stand",
+    "rig": "shared",
+    "active": true
+  },
+  {
+    "id": "p_8x0jw1dq",
+    "category": "Monitor Stand",
+    "name": "Cockpit-Mounted Single Monitor Stand - Supports up to 80\" Display",
+    "image": "https://trakracer.com/cdn/shop/files/MS-CM-SIN2_04-min_1_1800x1800.png?v=1764196220",
+    "price": 229,
+    "link": "https://trakracer.com/collections/monitor-stands/products/tr8020-single-monitor-stand-2",
+    "rig": "shared",
+    "active": true
   }
 ]
