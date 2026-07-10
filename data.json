@@ -45,5 +45,55 @@
     "link": "https://us.mozaracing.com/products/hgp-shifter",
     "rig": "racing",
     "active": true
+  },
+  {
+    "id": "p_09y3dh3t",
+    "category": "Rudder Pedals",
+    "name": "MOZA MRP Rudder Pedals",
+    "image": "https://us.mozaracing.com/cdn/shop/files/moza-mrp-rudder-pedals-1.jpg?v=1767606197&width=1920",
+    "price": 349,
+    "link": "https://us.mozaracing.com/products/mrp-rudder-pedals",
+    "rig": "flight",
+    "active": true
+  },
+  {
+    "id": "p_0el5rkp6",
+    "category": "Instrument Panel",
+    "name": "MOZA MGX1000 Instrument Panel",
+    "image": "https://us.mozaracing.com/cdn/shop/files/MGX1000InstrumentPanel-2.png?v=1783499795&width=1920",
+    "price": 449,
+    "link": "https://us.mozaracing.com/products/mgx1000",
+    "rig": "flight",
+    "active": true
+  },
+  {
+    "id": "p_txjqjr04",
+    "category": "Throttle",
+    "name": "MOZA MTQ Throttle Quadrant",
+    "image": "https://us.mozaracing.com/cdn/shop/files/MOZAMTQ-1_507a29a2-917a-4b1e-955d-07f9fd0386ff.png?v=1767606216&width=1920",
+    "price": 199,
+    "link": "https://us.mozaracing.com/products/mtq-throttle?pr_prod_strat=jac&pr_rec_id=18260a209&pr_rec_pid=10093014122798&pr_ref_pid=10090896982318&pr_seq=uniform",
+    "rig": "flight",
+    "active": true
+  },
+  {
+    "id": "p_1mc5rvrj",
+    "category": "Throttle",
+    "name": "MOZA TQA Throttle Module",
+    "image": "https://us.mozaracing.com/cdn/shop/files/MOZATQAThrottleModule-1.png?v=1761114786&width=1920",
+    "price": 39,
+    "link": "https://us.mozaracing.com/products/tqa-mod",
+    "rig": "flight",
+    "active": true
+  },
+  {
+    "id": "p_uqf3jels",
+    "category": "PC",
+    "name": "Gaming PC",
+    "image": "https://www.fractal-design.com/app/uploads/2024/02/North_XL_Charcoal_TGD_1-Left-Front-1440x1440.jpg",
+    "price": 7500,
+    "link": "",
+    "rig": "shared",
+    "active": true
   }
 ]
