@@ -145,5 +145,35 @@
     "link": "https://www.amazon.com/XG49VQ-Curved-Gaming-FreeSync-Monitor/dp/B07PZR2YY4/ref=sr_1_1?dib=eyJ2IjoiMSJ9.fyl9x6GhfAU3novMlBBmLkZU5NR_vJddz3qGNKJjqOJMeWirHBnKqdER82DMa-ASsdfrlyJf6rW5t0QehF2fQQFGQJbCTCqeWvkpq1IX7gKJpOHDDJBwOPIYbXg1reDZrWKF6YQOH7jA-nLff85sEJ7D2aBeMAtElzkIAYiGOv09xZtoBHD4yRPqSoae2t98br7dAvTQ3QGxVxcQsKfJ_3e4ODQHieHRVxAvgFkaVNc.klUYz7ft227kMqqSvOq20U-BG_2qdRZnyNJck5LoBbs&dib_tag=se&geniuslink=true&keywords=ASUS%2BROG%2BSTRIX%2BCurved&qid=1783698806&sr=8-1&th=1",
     "rig": "shared",
     "active": false
+  },
+  {
+    "id": "p_jt9rjypp",
+    "category": "Pedals",
+    "name": "MOZA CRP2 Load Cell Pedals (Throttle+Brake)",
+    "image": "https://us.mozaracing.com/cdn/shop/files/MOZA_CRP2_Load_Cell_Pedals.webp?v=1767606090&width=1920",
+    "price": 369,
+    "link": "https://us.mozaracing.com/products/crp2-pedals?_pos=3&_fid=f77667a78&_ss=c",
+    "rig": "racing",
+    "active": false
+  },
+  {
+    "id": "p_jckbv7dh",
+    "category": "Pedals",
+    "name": "MOZA CRP2 Load Cell Clutch Pedal",
+    "image": "https://us.mozaracing.com/cdn/shop/files/CRP2_Clutch_Pedal.webp?v=1751281051&width=1920",
+    "price": 99,
+    "link": "https://us.mozaracing.com/products/crp2-clutch?_pos=4&_fid=f77667a78&_ss=c",
+    "rig": "racing",
+    "active": false
+  },
+  {
+    "id": "p_fx3q2vnx",
+    "category": "Pedals",
+    "name": "MOZA mBooster Active Pedals",
+    "image": "https://us.mozaracing.com/cdn/shop/files/MOZA_mBooster_Active_Pedal_-_1_1007.png?v=1759992399&width=1920",
+    "price": 759,
+    "link": "https://us.mozaracing.com/products/mbooster-active-pedal?_pos=2&_fid=f77667a78&_ss=c",
+    "rig": "racing",
+    "active": false
   }
 ]
