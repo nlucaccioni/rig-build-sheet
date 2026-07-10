@@ -1,0 +1,49 @@
+[
+  {
+    "id": "p_9vkwkb8n",
+    "category": "Pedals",
+    "name": "MOZA mBooster Active Pedal Set (with CRP2 Throttle)",
+    "image": "https://us.mozaracing.com/cdn/shop/files/mBooster_Pedal_Set_with_CRP2_Throttle_-1.png?v=1767606139&width=1000",
+    "price": 949,
+    "link": "https://us.mozaracing.com/products/mbooster-pedal-set",
+    "rig": "racing"
+  },
+  {
+    "id": "p_t3enjktt",
+    "category": "Wheel Base + Wheel",
+    "name": "R12 V2 and RS V2 Bundle",
+    "image": "https://us.mozaracing.com/cdn/shop/files/R12RSV2_082.png?v=1752820272&width=1000",
+    "price": 739,
+    "link": "https://us.mozaracing.com/products/r12-rs-bundle",
+    "rig": "racing"
+  },
+  {
+    "id": "p_izmv7by2",
+    "category": "Yoke Base + Yoke",
+    "name": "MOZA AY210 Force Feedback Yoke Bundle",
+    "image": "https://us.mozaracing.com/cdn/shop/files/AY210_Bundle_2.png?v=1767606192&width=1920",
+    "price": 848,
+    "link": "https://us.mozaracing.com/products/ay210-ffb-yoke-bundle",
+    "rig": "flight"
+  },
+  {
+    "id": "p_d5p9zqdd",
+    "category": "Mounting Plate",
+    "name": "MOZA Universal Mounting Plate",
+    "image": "https://us.mozaracing.com/cdn/shop/files/MOZAUniversalMountingPlate4_ab98d569-e836-4ff3-ba23-1f43baf04dab.webp?v=1754562506&width=1000",
+    "price": 29,
+    "link": "https://us.mozaracing.com/products/universal-mounting-plate",
+    "rig": "racing",
+    "active": true
+  },
+  {
+    "id": "p_sy1y78ky",
+    "category": "Shifter",
+    "name": "MOZA   HGP   Shifter",
+    "image": "https://us.mozaracing.com/cdn/shop/files/MOZA-HGP-Shifter-1-update_f0b2312d-685e-40d4-a483-2d63358141fc.webp?v=1752745275&width=1000",
+    "price": 149,
+    "link": "https://us.mozaracing.com/products/hgp-shifter",
+    "rig": "racing",
+    "active": true
+  }
+]
