@@ -326,5 +326,15 @@
     "link": "https://dofreality.com/product/flight/motion-flight-sim-4-axis-hero-h4-with-sfu-and-xtra-smooth-gearing/",
     "rig": "flight",
     "active": false
+  },
+  {
+    "id": "p_qg1o0txz",
+    "category": "Motion Platform",
+    "name": "MOZA HMA150 Haptic Motion Actuator",
+    "image": "https://us.mozaracing.com/cdn/shop/files/HMA150-2.png?v=1785208107&width=1920",
+    "price": 2999,
+    "link": "https://us.mozaracing.com/products/hma150",
+    "rig": "racing",
+    "active": true
   }
 ]
